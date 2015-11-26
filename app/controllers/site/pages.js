@@ -8,7 +8,7 @@ module.exports = function (app) {
 
 router.get('/', function (req, res, next) {
     res.render('index', {
-      title: 'sanitycheck.it - How insane is your website?'
+      title: 'SanityCheck.it'
     });
 });
 
