@@ -6,6 +6,8 @@ module.exports = function (app) {
 };
 
 router.get('/', function (req, res, next) {
+  console.log('test');
+
   res.render('index', {
     title: 'SanityCheck.it'
   });

@@ -14,13 +14,28 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     develop: {
       server: {
-        file: 'app.js'
+        file: 'app/app.js'
       }
     },
     sass: {
       dist: {
         files: {
           'public/css/style.css': 'public/css/style.scss'
+        }
+      }
+    },
+    babel: {
+      options: {
+        sourceMap: true,
+        presets: ['es2015']
+      },
+      dist: {
+        files: {
+          'app/app.js': 'src/app.js',
+          'app/controllers/site/pages.js': 'src/controllers/site/pages.js',
+          'app/controllers/api/check.js': 'src/controllers/api/check.js',
+          'app/config/config.js': 'src/config/config.js',
+          'app/config/express.js': 'src/config/express.js'
         }
       }
     },
@@ -31,11 +46,11 @@ module.exports = function (grunt) {
       },
       js: {
         files: [
-          'app.js',
-          'app/**/*.js',
-          'config/*.js'
+          'src/app.js',
+          'src/**/*.js',
+          'src/config/*.js'
         ],
-        tasks: ['develop', 'delayed-livereload']
+        tasks: ['babel']
       },
       css: {
         files: [
@@ -76,6 +91,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'sass',
+    'babel',
     'develop',
     'watch'
   ]);
