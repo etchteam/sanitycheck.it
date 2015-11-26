@@ -1,12 +1,11 @@
-var express = require('express');
-var glob = require('glob');
-
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var compress = require('compression');
-var methodOverride = require('method-override');
+import express from 'express';
+import glob from 'glob';
+import favicon from 'serve-favicon';
+import logger from 'morgan';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import compress from 'compression';
+import methodOverride from 'method-override';
 
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
