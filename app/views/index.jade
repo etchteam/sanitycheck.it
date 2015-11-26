@@ -1,4 +1,13 @@
 extends layout
 
 block content
-  h1= title
+  header
+    h1= title
+    h2 Check your site is still rational.
+
+  form
+    .form-row
+      label(for='url') Site URL
+      input#url(type='url',name='url',value='',placeholder='http://super.site')
+    .form-row
+      button.btn.btn-primary(type='submit') Test this site
