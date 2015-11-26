@@ -1,5 +1,4 @@
 node_modules/
-public/css/style.css
 .sass-cache
 commit_images
 app/app.*
@@ -7,3 +6,4 @@ app/config
 app/models
 app/controllers
 public/js
+public/css
