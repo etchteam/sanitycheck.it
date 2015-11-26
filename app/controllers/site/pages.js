@@ -7,9 +7,9 @@ module.exports = function (app) {
 };
 
 router.get('/', function (req, res, next) {
-    res.render('index', {
-      title: 'SanityCheck.it'
-    });
+  res.render('index', {
+    title: 'SanityCheck.it'
+  });
 });
 
 router.get('/about', function (req, res, next) {
