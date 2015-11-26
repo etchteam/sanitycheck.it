@@ -39,6 +39,13 @@ module.exports = function (grunt) {
         }
       }
     },
+    browserify: {
+      dist: {
+        files: {
+          'public/js/main.js': ['src/public/js/**/*.js']
+        }
+      }
+    },
     watch: {
       options: {
         nospawn: true,
@@ -46,11 +53,9 @@ module.exports = function (grunt) {
       },
       js: {
         files: [
-          'src/app.js',
-          'src/**/*.js',
-          'src/config/*.js'
+          'src/**/*.js'
         ],
-        tasks: ['babel']
+        tasks: ['babel', 'browserify']
       },
       css: {
         files: [
@@ -92,6 +97,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'sass',
     'babel',
+    'browserify',
     'develop',
     'watch'
   ]);
