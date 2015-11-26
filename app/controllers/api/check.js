@@ -3,7 +3,6 @@ var express = require('express'),
 
 module.exports = function (app) {
   app.use('/', router);
-  app.use('/api/check', router);
 };
 
 router.post('/api/check', function (req, res, next) {

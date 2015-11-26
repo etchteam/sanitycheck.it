@@ -3,7 +3,6 @@ var express = require('express'),
 
 module.exports = function (app) {
   app.use('/', router);
-  app.use('/about', router);
 };
 
 router.get('/', function (req, res, next) {
