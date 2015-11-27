@@ -9,15 +9,15 @@ var messages = {
     2: 'Not bad!',
     3: "Aw no, this isn't good :("
   },
-  img: {
+  images: {
     1: 'Nice, not too many images :)',
     2: 'Got a few images there!',
     3: 'Getting a bit image heavy there!'
   },
   fonts: {
     1: 'Wicked, not too heavy on the fonts dude.',
-    2: ' fonts? Do you really need that many?',
-    3: ' fonts?! For real?!?!'
+    2: 'Do you really need that many fonts?',
+    3: 'For real?!?!'
   },
   load: {
     0: 'Looking for a job...?',
@@ -28,44 +28,6 @@ var messages = {
   }
 };
 
-function message (type, value) {
-  var score = 3;
-
-  switch (type) {
-    case 'css':
-    case 'js':
-    case 'fonts':
-      if (value <= 2) {
-        score = 1;
-      } else if (value <= 4) {
-        score = 2;
-      }
-      break;
-    case 'img':
-      if (value <= 10) {
-        score = 1;
-      } else if (value <= 20) {
-        score = 2;
-      }
-      break;
-    case 'load':
-      if (value <= 1000) {
-        score = 0;
-      } else if (value <= 2000) {
-        score = 1;
-      } else if (value <= 4000) {
-        score = 2;
-      } else if (value <= 8000) {
-        score = 3;
-      } else {
-        score = 4;
-      }
-      break;
-  }
-
+export default function (type, score) {
   return messages[type][score];
-}
-
-export default function (type, value) {
-  return message(type, value);
 }

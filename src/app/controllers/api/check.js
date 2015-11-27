@@ -3,7 +3,7 @@ import path from 'path';
 import phantom from 'phantom';
 import phantomjs from 'phantomjs';
 import io from 'socket.io';
-import message from '../../lib/messages';
+import result from '../../models/result';
 
 var router = express.Router();
 
@@ -40,28 +40,28 @@ function testResources(url, socket) {
               socket.emit('message', {
                 status: 'success',
                 results: [
-                  { name: 'images', pass: true, value: img, message: message('img', img) }
+                  result({ name: 'images', value: img })
                 ]});
             } else if (contentType.match(cssPattern)) {
               css++;
               socket.emit('message', {
                 status: 'success',
                 results: [
-                  { name: 'css', pass: css < 4, value: css, message: message('css', css) }
+                  result({ name: 'css', value: css })
                 ]});
             } else if (contentType.match(jsPattern)) {
               js++;
               socket.emit('message', {
                 status: 'success',
                 results: [
-                  { name: 'js', pass: js < 4, value: js, message: message('js', js) }
+                  result({ name: 'js', value: js })
                 ]});
             } else if (contentType.match(fontPattern)) {
               fonts++;
               socket.emit('message', {
                 status: 'success',
                 results: [
-                  { name: 'fonts', pass: true, value: fonts, message: message('fonts', fonts) }
+                  result({ name: 'fonts', value: fonts })
                 ]});
             }
 
@@ -76,15 +76,11 @@ function testResources(url, socket) {
 
           page.evaluate(function () {
             return document.title;
-          }, function (result) {
+          }, function () {
             socket.emit('message', {
               status: 'success',
               results: [
-                { name: 'load', pass: time < 4000, value: time, message: message('load', time) },
-                { name: 'js', pass: js < 4, value: js, message: message('js', js) },
-                { name: 'css', pass: css < 4, value: css, message: message('css', css) },
-                { name: 'images', pass: true, value: img, message: message('img', img) },
-                { name: 'fonts', pass: true, value: fonts, message: message('fonts', fonts) }
+                result({ name: 'load', value: time })
               ]});
             ph.exit();
           });
