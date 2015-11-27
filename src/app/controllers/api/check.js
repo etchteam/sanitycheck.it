@@ -97,9 +97,9 @@ function testResources(url, socket) {
             socket.emit('message', {
               status: 'success',
               results: [
-                result({ name: 'responsive', value: testResults.responsive }),
-                result({ name: 'html5', value: testResults.html5 }),
-                result({ name: 'accessible', value: testResults.accessible }),
+                result({ name: 'responsive', value: testResults.responsive || false }),
+                result({ name: 'html5', value: testResults.html5 || false }),
+                result({ name: 'accessible', value: testResults.accessible || false }),
                 result({ name: 'load', value: time })
               ]});
             ph.exit();
