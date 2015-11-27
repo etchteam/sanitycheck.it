@@ -35,7 +35,8 @@ module.exports = function (grunt) {
           'app/controllers/site/pages.js': 'src/app/controllers/site/pages.js',
           'app/controllers/api/check.js': 'src/app/controllers/api/check.js',
           'app/config/config.js': 'src/app/config/config.js',
-          'app/config/express.js': 'src/app/config/express.js'
+          'app/config/express.js': 'src/app/config/express.js',
+          'app/lib/messages.js': 'src/app/lib/messages.js'
         }
       }
     },
@@ -48,20 +49,6 @@ module.exports = function (grunt) {
       dist: {
         files: {
           'public/js/main.js': ['src/public/js/**/*.js']
-        }
-      }
-    },
-    nodemon: {
-      dev: {
-        script: 'app/app.js',
-        options: {
-          watch: 'app/**/*.js',
-          callback: function(nodemon) {
-            // By default the nodemon output is logged
-            nodemon.on('log', function(event) {
-              console.log(event.colour);
-            });
-          }
         }
       }
     },
