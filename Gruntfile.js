@@ -35,7 +35,8 @@ module.exports = function (grunt) {
           'app/controllers/site/pages.js': 'src/app/controllers/site/pages.js',
           'app/controllers/api/check.js': 'src/app/controllers/api/check.js',
           'app/config/config.js': 'src/app/config/config.js',
-          'app/config/express.js': 'src/app/config/express.js'
+          'app/config/express.js': 'src/app/config/express.js',
+          'app/lib/checker.js': 'src/app/lib/checker.js'
         }
       }
     },

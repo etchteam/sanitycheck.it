@@ -5,5 +5,7 @@ app/app.*
 app/config
 app/models
 app/controllers
+app/lib
 public/js
 public/css
+npm-debug.log
