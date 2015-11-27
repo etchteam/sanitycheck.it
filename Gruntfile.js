@@ -51,20 +51,6 @@ module.exports = function (grunt) {
         }
       }
     },
-    nodemon: {
-      dev: {
-        script: 'app/app.js',
-        options: {
-          watch: 'app/**/*.js',
-          callback: function(nodemon) {
-            // By default the nodemon output is logged
-            nodemon.on('log', function(event) {
-              console.log(event.colour);
-            });
-          }
-        }
-      }
-    },
     watch: {
       options: {
         nospawn: true,
