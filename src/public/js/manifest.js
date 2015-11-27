@@ -11,18 +11,11 @@ WebFontConfig = {
   s.parentNode.insertBefore(wf, s);
 })();
 
-var WebSocket = require('ws');
-var ws = new WebSocket('ws://localhost:3000/api/check');
+var io = require('socket.io-browserify');
 
-console.log(ws);
-
-ws.onopen = function open(e) {
-  console.log('ws open');
-  ws.send('something');
-};
-
-ws.onmessage = function(data, flags) {
-  // flags.binary will be set if a binary data is received.
-  // flags.masked will be set if the data was masked.
-  console.log(data,flags);
-};
+var socket = io.connect('http://localhost:9000');
+console.log(socket);
+socket.on('news', function (data) {
+  console.log(data);
+  socket.emit('my other event', { my: 'data' });
+});
