@@ -45,6 +45,7 @@
 @import "./node_modules/redbullet-styleguide/src/scss/components/icon-title";
 
 @import "overrides";
+@import "test-result";
 
 .logo {
   width: 80%;
@@ -54,4 +55,16 @@
 
 h3 {
   margin-bottom: $spacing-v;
+}
+
+.results:empty {
+  padding: $padding-large;
+  text-align: center;
+  &:after {
+    content: url('../img/ajax-loader.gif');
+  }
+
+  + .help-rb {
+    display: none;
+  }
 }

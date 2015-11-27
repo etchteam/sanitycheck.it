@@ -1,0 +1,56 @@
+.test-result {
+  position: relative;
+  padding-left: 5em + $padding-h*3;
+  border: 0 none;
+
+  &:before {
+    float: left;
+    content: "";
+    background: #DDD;
+    padding: $padding-v $padding-h;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 5em;
+    background-position: center center;
+    background-size: 80% auto;
+    background-repeat: no-repeat;
+  }
+
+  background: #FFF;
+  color: #333;
+
+  h3 {
+    margin-bottom: 0;
+    color: #333;
+  }
+}
+
+.score-0:before, .score-1:before {
+  background-image: url('../img/faces-02.svg');
+  background-color: #089aab;
+}
+
+.score-2:before, .score-3:before {
+  background-image: url('../img/faces-03.svg');
+  background-color: #e7ae13;
+}
+
+.score-4:before {
+  background-image: url('../img/faces-01.svg');
+  background-color: #ff6562;
+}
+
+.redbullet {
+  &:before {
+    background-image: url('../img/rb-logo.svg');
+    background-color: #eb5e27;
+  }
+
+  color: #eb5e27;
+
+  h3 {
+    color: #eb5e27;
+  }
+}
