@@ -99,13 +99,8 @@ function runTests(url,socket) {
   testResources(url,socket);
 }
 
-module.exports = function (app) {
+module.exports = function (app, io) {
   app.use('/', router);
-
-  var server = require('http').Server(app);
-  var io = require('socket.io').listen(server);
-
-  server.listen(9000);
 
   io.on('connection', function (socket) {
     console.log('socket connected');
