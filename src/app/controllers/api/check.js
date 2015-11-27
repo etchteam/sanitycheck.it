@@ -76,7 +76,7 @@ function testResources(url, socket) {
 
           page.evaluate(function () {
             return document.title;
-          }, function (result) {
+          }, function () {
             socket.emit('message', {
               status: 'success',
               results: [
