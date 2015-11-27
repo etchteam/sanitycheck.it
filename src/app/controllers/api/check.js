@@ -1,11 +1,10 @@
 import express from 'express';
 import path from 'path';
 import childProcess from 'child_process';
-import phantomjs from 'phantomjs';
+import phantom from 'phantom';
 import bodyParser from 'body-parser';
 
 var router = express.Router();
-var binPath = phantomjs.path;
 var jsonParser = bodyParser.json();
 
 module.exports = function (app) {
@@ -15,17 +14,20 @@ module.exports = function (app) {
 router.post('/api/check', jsonParser, function (req, res, next) {
   var url = req.body.url;
 
-  var childArgs = [
-    path.normalize(__dirname + '/../../lib/checker.js'),
-  ];
-
-  childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
-    if (err || stderr) {
-      res.sendStatus(500);
-    }
-
-    //console.log(stdout);
+  phantom.create(function (ph) {
+    ph.createPage(function (page) {
+      page.open(url, function (status) {
+        if (status == 'success') {
+          page.evaluate(function () {
+            return document.title;
+          }, function (result) {
+            res.json({ url: url, title: result });
+            ph.exit();
+          });
+        } else {
+          res.sendStatus(500);
+        }
+      });
+    });
   });
-
-  res.json({ url: url });
 });
