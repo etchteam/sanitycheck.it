@@ -3,22 +3,26 @@ import path from 'path';
 import childProcess from 'child_process';
 import phantom from 'phantom';
 import bodyParser from 'body-parser';
+import io from 'socket.io';
 
 var router = express.Router();
 var jsonParser = bodyParser.json();
 
 module.exports = function (app) {
   app.use('/', router);
-  app.use(function (req, res, next) {
-    console.log('middleware');
-    req.testing = 'testing';
-    return next();
-  });
-  app.ws('/api/check', function(ws, req) {
-    ws.on('message', function(msg) {
-      console.log(msg);
-    });
-    console.log('socket', req.testing);
+
+  var server = require('http').Server(app);
+  var io = require('socket.io').listen(server);
+
+  server.listen(9000);
+  //io.set('origins', '*');
+
+  io.on('connection', function (socket) {
+    console.log('connected');
+    socket.emit('news', { hello: 'world' });
+      socket.on('my other event', function (data) {
+        console.log(data);
+      });
   });
 };
 

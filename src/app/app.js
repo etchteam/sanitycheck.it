@@ -3,7 +3,6 @@ import config from './config/config';
 import expressConfig from './config/express';
 
 var app = express();
-var expressWs = require('express-ws')(app);
 
 expressConfig(app, config);
 
