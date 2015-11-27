@@ -1,5 +1,6 @@
 import io from 'socket.io-browserify';
 import elementClass from 'element-class';
+import css from 'dom-css';
 
 var socket;
 
@@ -49,6 +50,18 @@ function fireUrl(url){
   while (results.firstChild) {
     results.removeChild(results.firstChild);
   }
+
+  let preResults = document.querySelectorAll('.pre-results'),
+      postResults = document.querySelectorAll('.post-results');
+
+  for (var i=0;i<preResults.length;i++) {
+    css(preResults[i],{'display': 'none'});
+  }
+
+  for (var i=0;i<postResults.length;i++) {
+    css(postResults[i],{'display': 'block'});
+  }
+
   socket.emit('newurl', { url: url });
 }
 

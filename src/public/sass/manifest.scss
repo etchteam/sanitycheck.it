@@ -1,3 +1,4 @@
+@import "fonts";
 @import './node_modules/normalize.css/normalize';
 @import 'variables';
 @import "./node_modules/redbullet-styleguide/src/scss/mixins";
@@ -43,14 +44,14 @@
 @import "./node_modules/redbullet-styleguide/src/scss/components/brag-block";
 @import "./node_modules/redbullet-styleguide/src/scss/components/icon-title";
 
-h1,h2,h3,h4,h5,h6, main header h2, main header .lead {
-	color: #fff;
+@import "overrides";
+
+.logo {
+  width: 80%;
+  max-width: pxtoem(275);
+  margin: auto auto $spacing-v auto;
 }
 
-main.wrapper header::after {
-	background: #FFF;
-}
-
-input, input:focus {
-  color: #333;
+h3 {
+  margin-bottom: $spacing-v;
 }

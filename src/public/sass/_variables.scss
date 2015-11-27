@@ -18,15 +18,15 @@ $padding-v-fluid: 5%;
 $padding-h-fluid: 10%;
 
 // used for spacing around/between elements
-$spacing-v: 1em;
+$spacing-v: 1.5em;
 $spacing-h: 1em;
 $spacing-v-fluid: 5%;
 $spacing-h-fluid: 10%;
 
 
 // Fonts
-$font-serif:'Roboto Slab',Rockwell,Georgia,Cambria,"Times New Roman",Times,serif;
-$font-sans: Roboto, "Myriad Pro","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+$font-serif:'cooper_hewittbold',sans-serif;
+$font-sans: 'cooper_hewittbook',sans-serif;;
 $font-mono: courier,"courier new", monospace;
 $font-hand: cursive;
 
@@ -46,7 +46,7 @@ $color-comms-positive: #7AC29A;
 //
 
 $base-bg: #2bcfc4;
-$base-color: $color-brand-dark;
+$base-color: #FFF;
 $base-color-light: #fff;
 $base-color-dark: #fff;
 $base-font: $font-sans;
@@ -63,9 +63,9 @@ $alert-bg-warning: lighten($color-comms-warning,30%);
 //
 
 $ui-border-width: .125em;
-$ui-border-color: darken($color-brand-light,5%);
-$ui-border-radius: .25em;
-$ui-border-radius-large: $ui-border-radius * 8;
+$ui-border-color: #fff;
+$ui-border-radius: 0;
+$ui-border-radius-large: .25em * 8;
 
 
 $ui-transition-effect: cubic-bezier(.10, .10, .25, .90);
