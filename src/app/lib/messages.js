@@ -28,7 +28,7 @@ var messages = {
   }
 };
 
-var message = function (type, value) {
+function message (type, value) {
   var score = 3;
 
   switch (type) {
@@ -64,7 +64,7 @@ var message = function (type, value) {
   }
 
   return messages[type][score];
-};
+}
 
 export default function (type, value) {
   return message(type, value);
