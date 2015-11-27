@@ -31,6 +31,15 @@ export default function (name, value) {
         score = 4;
       }
       break;
+    case 'html5':
+      score = (value) ? 0 : 5;
+      break;
+    case 'responsive':
+      score = (value) ? 0 : 5;
+      break;
+    case 'accessible':
+      score = (value) ? 0 : 5;
+      break;
   }
 
   return score;

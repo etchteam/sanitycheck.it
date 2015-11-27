@@ -1,0 +1,4 @@
+
+[submodule "src/public/sass/redbullet-styleguide"]
+	path = src/public/sass/redbullet-styleguide
+	url = git@bitbucket.org:redbullet/red-bullet-styleguide.git
