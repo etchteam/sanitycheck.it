@@ -8,23 +8,6 @@ import io from 'socket.io';
 var router = express.Router();
 var jsonParser = bodyParser.json();
 
-module.exports = function (app) {
-  app.use('/', router);
-
-  var server = require('http').Server(app);
-  var io = require('socket.io').listen(server);
-
-  server.listen(9000);
-
-  io.on('connection', function (socket) {
-    console.log('socket connected');
-    socket.on('newurl', function (data) {
-      console.log(data);
-      socket.emit('message', data);
-    });
-  });
-};
-
 var message = function (type, value) {
   var message = '';
 
@@ -77,8 +60,8 @@ var message = function (type, value) {
   return message;
 };
 
-router.post('/api/check', jsonParser, function (req, res, next) {
-  var url = req.body.url;
+function testResources(url,socket){
+  var url = url;
 
   phantom.create(function (ph) {
     ph.createPage(function (page) {
@@ -120,10 +103,9 @@ router.post('/api/check', jsonParser, function (req, res, next) {
           page.evaluate(function () {
             return document.title;
           }, function (result) {
-            res.json({
-              url: url,
-              title: result,
-              tests: [
+            socket.emit('message', {
+              status: 'success',
+              results: [
                 { name: 'load', pass: time < 4000, value: time, message: message('load', time) },
                 { name: 'js', pass: js < 4, value: js, message: message('js', js) },
                 { name: 'css', pass: css < 4, value: css, message: message('css', css) },
@@ -133,12 +115,37 @@ router.post('/api/check', jsonParser, function (req, res, next) {
             ph.exit();
           });
         } else {
-          res.sendStatus(500);
+          socket.emit('message', {
+            status: 'failed'
+          });
         }
       });
     });
 
   });
-});
+}
 
+function runTests(url,socket) {
+  // Put tests here
+  testResources(url,socket);
+}
 
+module.exports = function (app) {
+  app.use('/', router);
+
+  var server = require('http').Server(app);
+  var io = require('socket.io').listen(server);
+
+  server.listen(9000);
+
+  io.on('connection', function (socket) {
+    console.log('socket connected');
+
+    socket.on('newurl', function (data) {
+      runTests(data.url,socket);
+      console.log(data);
+      socket.emit('message', data);
+    });
+
+  });
+};
