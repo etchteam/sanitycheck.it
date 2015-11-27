@@ -12,7 +12,7 @@ function openSocket(){
 
   socket.on('message', function (data) {
     // Put the message on the page
-    console.log(data);
+    //console.log(data);
 
     if (data.status == 'success' && data.results) {
       for(var i=0;i<data.results.length;i++) {
@@ -22,22 +22,33 @@ function openSocket(){
             result = data.results[i];
 
         if (result.pass) {
-          elementClass(div).add('card alert-info');
+          elementClass(div).add('card alert-info test-result-'+result.name.replace(' ','-'));
         } else {
-          elementClass(div).add('card alert-warning');
+          elementClass(div).add('card alert-warning test-result-'+result.name.replace(' ','-'));
         }
         h3.innerHTML = result.name;
         p.innerHTML = result.message;
         div.appendChild(h3);
         div.appendChild(p);
 
-        document.querySelector('.results').appendChild(div);
+        if (document.querySelector('.test-result-'+result.name.replace(' ','-'))) {
+          document.querySelector('.results').replaceChild(div,document.querySelector('.test-result-'+result.name.replace(' ','-')));
+        } else {
+          document.querySelector('.results').appendChild(div);
+        }
       }
+    } else {
+      alert('Oh no the test went up the shitter');
     }
   });
 }
 
 function fireUrl(url){
+  // Get rid of the old tests
+  var results = document.querySelector('.results');
+  while (results.firstChild) {
+    results.removeChild(results.firstChild);
+  }
   socket.emit('newurl', { url: url });
 }
 
