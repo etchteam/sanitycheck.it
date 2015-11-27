@@ -74,16 +74,37 @@ function testResources(url, socket) {
         if (status == 'success') {
           time = Date.now() - time;
 
-          page.evaluate(function () {
-            return document.title;
-          }, function () {
+          page.evaluate(function(){
+            var testResults = {};
+            testResults.responsive = (document.querySelector('[name="viewport"]')) ? true : false;
+
+            var is_html5 = function () {
+              if (document.doctype === null) return false;
+
+              var node = document.doctype;
+              var doctype_string = "<!DOCTYPE " + node.name + (node.publicId ? ' PUBLIC"' + node.publicId + '"' : '') + (!node.publicId && node.systemId ? ' SYSTEM' : '') + (node.systemId ? ' "' + node.systemId + '"' : '') + ">";
+
+              return doctype_string === '<!DOCTYPE html>';
+            };
+
+            testResults.html5 = is_html5();
+
+            testResults.accessible = (document.querySelector('[role]')) ? true : false;
+
+            return testResults;
+
+          },function(testResults){
             socket.emit('message', {
               status: 'success',
               results: [
+                result({ name: 'responsive', value: testResults.responsive }),
+                result({ name: 'html5', value: testResults.html5 }),
+                result({ name: 'accessible', value: testResults.accessible }),
                 result({ name: 'load', value: time })
               ]});
             ph.exit();
           });
+
         } else {
           socket.emit('message', {
             status: 'failed'

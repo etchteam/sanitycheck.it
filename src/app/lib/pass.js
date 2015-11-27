@@ -17,6 +17,15 @@ export default function (name, value) {
     case 'load':
       pass = value <= 4000;
       break;
+    case 'html5':
+      pass = value;
+      break;
+    case 'responsive':
+      pass = value;
+      break;
+    case 'accessible':
+      pass = value;
+      break;
   }
 
   return pass;
