@@ -23,9 +23,9 @@ function openSocket(){
             result = data.results[i];
 
         if (result.pass) {
-          elementClass(div).add('card alert-info test-result-'+result.name.replace(' ','-'));
+          elementClass(div).add('card test-result test-result-'+result.name.replace(' ','-'));
         } else {
-          elementClass(div).add('card alert-warning test-result-'+result.name.replace(' ','-'));
+          elementClass(div).add('card test-result test-result-'+result.name.replace(' ','-'));
         }
         h3.innerHTML = result.name;
         p.innerHTML = result.message;
