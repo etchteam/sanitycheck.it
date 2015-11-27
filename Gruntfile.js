@@ -40,6 +40,11 @@ module.exports = function (grunt) {
       }
     },
     browserify: {
+      options: {
+        browserifyOptions: {
+          debug: true
+        }
+      },
       dist: {
         files: {
           'public/js/main.js': ['src/public/js/**/*.js']
