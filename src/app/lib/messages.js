@@ -27,15 +27,15 @@ var messages = {
     4: 'Oh god... Yeah, you need some help here.'
   },
   html5: {
-    5: 'Your HTML could do with updating',
+    4: 'Your HTML could do with updating',
     0: 'Yay, we love HTML5!'
   },
   responsive: {
-    5: 'Your site is not mobile ready',
+    4: 'Your site is not mobile ready',
     0: 'Nice mobile ready site'
   },
   accessible: {
-    5: 'Your site needs to be made more accessible for disabled people',
+    4: 'Your site needs to be made more accessible for disabled people',
     0: 'Nice accessibility work'
   }
 };
