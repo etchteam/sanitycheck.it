@@ -12,8 +12,9 @@ function openSocket(){
   });
 
   socket.on('message', function (data) {
+
     // Put the message on the page
-    //console.log(data);
+    console.log(data);
 
     if (data.status == 'success' && data.results) {
       for(var i=0;i<data.results.length;i++) {
@@ -23,9 +24,9 @@ function openSocket(){
             result = data.results[i];
 
         if (result.pass) {
-          elementClass(div).add('card test-result test-result-'+result.name.replace(' ','-'));
+          elementClass(div).add('card test-result score-'+result.score+' test-result-'+result.name.replace(' ','-'));
         } else {
-          elementClass(div).add('card test-result test-result-'+result.name.replace(' ','-'));
+          elementClass(div).add('card test-result score-'+result.score+' test-result-'+result.name.replace(' ','-'));
         }
         h3.innerHTML = result.name;
         p.innerHTML = result.message;

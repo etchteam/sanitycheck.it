@@ -56,3 +56,15 @@
 h3 {
   margin-bottom: $spacing-v;
 }
+
+.results:empty {
+  padding: $padding-large;
+  text-align: center;
+  &:after {
+    content: url('../img/ajax-loader.gif');
+  }
+
+  + .help-rb {
+    display: none;
+  }
+}
