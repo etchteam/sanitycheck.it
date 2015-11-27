@@ -110,4 +110,10 @@ module.exports = function (grunt) {
     'develop',
     'watch'
   ]);
+
+  grunt.registerTask('prod', [
+    'sass',
+    'babel',
+    'browserify'
+  ]);
 };
