@@ -4,61 +4,10 @@ import childProcess from 'child_process';
 import phantom from 'phantom';
 import bodyParser from 'body-parser';
 import io from 'socket.io';
+import message from '../../lib/messages';
 
 var router = express.Router();
 var jsonParser = bodyParser.json();
-
-var message = function (type, value) {
-  var message = '';
-
-  if (type == 'css') {
-    if (value <= 2) {
-      message = 'Sweet! You do css well!';
-    } else if (value <= 4) {
-      message = 'Eh, got some room for improvement dude.';
-    } else {
-      message = 'Esch, doing it wrong.';
-    }
-  } else if (type == 'js') {
-    if (value <= 2) {
-      message = 'Hell yeah, keep it minimal!';
-    } else if (value <= 4) {
-      message = 'Not bad!';
-    } else {
-      message = "Aw no, this isn't going well :(";
-    }
-  } else if (type == 'img') {
-    if (value <= 10) {
-      message = 'Nice, not too many images :)';
-    } else if (value <= 20) {
-      message = 'Got a few images there!';
-    } else {
-      message = 'Getting a bit image heavy there!';
-    }
-  } else if (type == 'fonts') {
-    if (value <= 2) {
-      message = 'Wicked, not too heavy on the fonts dude.';
-    } else if (value <= 4) {
-      message = value + ' fonts? Do you really need that many?';
-    } else {
-      message = value + ' fonts?! For real?!?!';
-    }
-  } else if (type == 'load') {
-    if (value <= 1000) {
-      message = 'Looking for a job...?';
-    } else if (value <= 2000) {
-      message = 'Sweet! Fast sites are good sites!';
-    } else if (value <= 4000) {
-      message = "Not bad, but could do with some improvement. At 4 seconds you're losing 25% of your visitors before the page loads";
-    } else if (value <= 8000) {
-      message = 'You know, slow pages are bad for everyone, you really should look at improving this';
-    } else {
-      message = 'Oh god... Yeah, you need some help here.';
-    }
-  }
-
-  return message;
-};
 
 function testResources(url,socket){
   var url = url;
