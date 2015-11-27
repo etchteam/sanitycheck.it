@@ -1,2 +1,52 @@
 @import './node_modules/normalize.css/normalize';
-@import './node_modules/redbullet-styleguide/src/scss/styleguide';
+@import 'variables';
+@import "./node_modules/redbullet-styleguide/src/scss/mixins";
+@import "./node_modules/redbullet-styleguide/src/scss/functions";
+
+@import "./node_modules/redbullet-styleguide/src/scss/base/breakpoints";
+@import "./node_modules/redbullet-styleguide/src/scss/base/layout";
+@import "./node_modules/redbullet-styleguide/src/scss/base/typography";
+@import "./node_modules/redbullet-styleguide/src/scss/base/links";
+@import "./node_modules/redbullet-styleguide/src/scss/base/forms";
+@import "./node_modules/redbullet-styleguide/src/scss/base/tables";
+@import "./node_modules/redbullet-styleguide/src/scss/base/media";
+@import "./node_modules/redbullet-styleguide/src/scss/base/helpers";
+
+
+// UI
+@import "./node_modules/redbullet-styleguide/src/scss/components/buttons";
+@import "./node_modules/redbullet-styleguide/src/scss/components/nav-block";
+@import "./node_modules/redbullet-styleguide/src/scss/components/alert";
+@import "./node_modules/redbullet-styleguide/src/scss/components/collapse";
+@import "./node_modules/redbullet-styleguide/src/scss/components/card";
+@import "./node_modules/redbullet-styleguide/src/scss/components/validation";
+@import "./node_modules/redbullet-styleguide/src/scss/components/skin";
+@import "./node_modules/redbullet-styleguide/src/scss/components/icon";
+
+// Layout
+@import "./node_modules/redbullet-styleguide/src/scss/components/breakout";
+@import "./node_modules/redbullet-styleguide/src/scss/components/hero";
+@import "./node_modules/redbullet-styleguide/src/scss/components/title-bar";
+
+// Content
+@import "./node_modules/redbullet-styleguide/src/scss/components/callout";
+@import "./node_modules/redbullet-styleguide/src/scss/components/longform";
+@import "./node_modules/redbullet-styleguide/src/scss/components/list-block";
+@import "./node_modules/redbullet-styleguide/src/scss/components/list-grid";
+@import "./node_modules/redbullet-styleguide/src/scss/components/media-block";
+@import "./node_modules/redbullet-styleguide/src/scss/components/context";
+@import "./node_modules/redbullet-styleguide/src/scss/components/browser-chrome";
+@import "./node_modules/redbullet-styleguide/src/scss/components/image-group";
+@import "./node_modules/redbullet-styleguide/src/scss/components/avatar";
+@import "./node_modules/redbullet-styleguide/src/scss/components/syntax";
+@import "./node_modules/redbullet-styleguide/src/scss/components/hiring";
+@import "./node_modules/redbullet-styleguide/src/scss/components/brag-block";
+@import "./node_modules/redbullet-styleguide/src/scss/components/icon-title";
+
+h1,h2,h3,h4,h5,h6, main header h2, main header .lead {
+	color: #fff;
+}
+
+main.wrapper header::after {
+	background: #FFF;
+}

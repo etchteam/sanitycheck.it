@@ -1,0 +1,76 @@
+//
+// Ingredients
+//
+
+// Sizing
+$font-size: 16;
+$base-unit: 16px;
+$line-height: 1.5; // #NOTE: Do we need different line heights for headings?
+$line-length: 35em; // Ideal line length
+$base-min-width: 20em;
+$base-max-width: 120em;
+
+// used for padding inside components/elements
+$padding-v: .5em;
+$padding-h: 1em;
+$padding-large: $padding-v * 2 $padding-h * 2;
+$padding-v-fluid: 5%;
+$padding-h-fluid: 10%;
+
+// used for spacing around/between elements
+$spacing-v: 1em;
+$spacing-h: 1em;
+$spacing-v-fluid: 5%;
+$spacing-h-fluid: 10%;
+
+
+// Fonts
+$font-serif:'Roboto Slab',Rockwell,Georgia,Cambria,"Times New Roman",Times,serif;
+$font-sans: Roboto, "Myriad Pro","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+$font-mono: courier,"courier new", monospace;
+$font-hand: cursive;
+
+// Colors
+
+$color-brand-primary: #f2456e;
+$color-brand-dark: #66615b;
+$color-brand-light: #155e63;
+
+$color-comms-info:  #67b3c8;
+$color-comms-warning: #f3bb45;
+$color-comms-negative: $color-brand-primary;
+$color-comms-positive: #7AC29A;
+
+//
+// Base
+//
+
+$base-bg: #2bcfc4;
+$base-color: $color-brand-dark;
+$base-color-light: #fff;
+$base-color-dark: #fff;
+$base-font: $font-sans;
+
+$link-color:  #2bcfc4;
+
+$alert-color-info: $color-comms-info;
+$alert-bg-info: lighten($color-comms-info,35%);
+$alert-color-warning: darken($color-comms-warning, 5%);
+$alert-bg-warning: lighten($color-comms-warning,30%);
+
+//
+// UI
+//
+
+$ui-border-width: .125em;
+$ui-border-color: darken($color-brand-light,5%);
+$ui-border-radius: .25em;
+$ui-border-radius-large: $ui-border-radius * 8;
+
+
+$ui-transition-effect: cubic-bezier(.10, .10, .25, .90);
+$ui-transition: .125s $ui-transition-effect;
+
+
+
+// Layout
