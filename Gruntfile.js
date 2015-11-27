@@ -31,11 +31,11 @@ module.exports = function (grunt) {
       },
       dist: {
         files: {
-          'app/app.js': 'src/app.js',
-          'app/controllers/site/pages.js': 'src/controllers/site/pages.js',
-          'app/controllers/api/check.js': 'src/controllers/api/check.js',
-          'app/config/config.js': 'src/config/config.js',
-          'app/config/express.js': 'src/config/express.js'
+          'app/app.js': 'src/app/app.js',
+          'app/controllers/site/pages.js': 'src/app/controllers/site/pages.js',
+          'app/controllers/api/check.js': 'src/app/controllers/api/check.js',
+          'app/config/config.js': 'src/app/config/config.js',
+          'app/config/express.js': 'src/app/config/express.js'
         }
       }
     },
