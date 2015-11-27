@@ -35,8 +35,7 @@ module.exports = function (grunt) {
           'app/controllers/site/pages.js': 'src/app/controllers/site/pages.js',
           'app/controllers/api/check.js': 'src/app/controllers/api/check.js',
           'app/config/config.js': 'src/app/config/config.js',
-          'app/config/express.js': 'src/app/config/express.js',
-          'app/lib/checker.js': 'src/app/lib/checker.js'
+          'app/config/express.js': 'src/app/config/express.js'
         }
       }
     },
@@ -52,6 +51,20 @@ module.exports = function (grunt) {
         }
       }
     },
+    nodemon: {
+      dev: {
+        script: 'app/app.js',
+        options: {
+          watch: 'app/**/*.js',
+          callback: function(nodemon) {
+            // By default the nodemon output is logged
+            nodemon.on('log', function(event) {
+              console.log(event.colour);
+            });
+          }
+        }
+      }
+    },
     watch: {
       options: {
         nospawn: true,
@@ -61,7 +74,7 @@ module.exports = function (grunt) {
         files: [
           'src/**/*.js'
         ],
-        tasks: ['babel', 'browserify']
+        tasks: ['babel', 'browserify','develop']
       },
       css: {
         files: [

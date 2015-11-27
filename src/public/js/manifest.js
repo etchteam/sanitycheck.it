@@ -10,3 +10,12 @@ WebFontConfig = {
   var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(wf, s);
 })();
+
+var io = require('socket.io-browserify');
+
+var socket = io.connect('http://localhost:9000');
+console.log(socket);
+socket.on('news', function (data) {
+  console.log(data);
+  socket.emit('my other event', { my: 'data' });
+});

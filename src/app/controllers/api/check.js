@@ -1,27 +1,51 @@
 import express from 'express';
 import path from 'path';
 import childProcess from 'child_process';
-import phantomjs from 'phantomjs';
+import phantom from 'phantom';
+import bodyParser from 'body-parser';
+import io from 'socket.io';
 
 var router = express.Router();
-var binPath = phantomjs.path;
+var jsonParser = bodyParser.json();
 
 module.exports = function (app) {
   app.use('/', router);
+
+  var server = require('http').Server(app);
+  var io = require('socket.io').listen(server);
+
+  server.listen(9000);
+  //io.set('origins', '*');
+
+  io.on('connection', function (socket) {
+    console.log('connected');
+    socket.emit('news', { hello: 'world' });
+    socket.on('my other event', function (data) {
+      console.log(data);
+    });
+});
 };
 
-router.post('/api/check', function (req, res, next) {
-  var childArgs = [
-    path.normalize(__dirname + '/../../lib/checker.js'),
-  ];
+router.post('/api/check', jsonParser, function (req, res, next) {
+  var url = req.body.url;
 
-  childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
-    if (err || stderr) {
-      res.sendStatus(500);
-    }
+  phantom.create(function (ph) {
+    ph.createPage(function (page) {
+      page.open(url, function (status) {
+        if (status == 'success') {
+          page.evaluate(function () {
+            return document.title;
+          }, function (result) {
+            res.json({ url: url, title: result });
+            ph.exit();
+          });
+        } else {
+          res.sendStatus(500);
+        }
+      });
+    });
 
-    //console.log(stdout);
   });
-
-  res.json({ params: req.body });
 });
+
+
