@@ -15,14 +15,13 @@ module.exports = function (app) {
   var io = require('socket.io').listen(server);
 
   server.listen(9000);
-  //io.set('origins', '*');
 
   io.on('connection', function (socket) {
-    console.log('connected');
-    socket.emit('news', { hello: 'world' });
-      socket.on('my other event', function (data) {
-        console.log(data);
-      });
+    console.log('socket connected');
+    socket.on('newurl', function (data) {
+      console.log(data);
+      socket.emit('message', data);
+    });
   });
 };
 

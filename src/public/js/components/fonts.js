@@ -1,6 +1,5 @@
 export default function(){
-
-  WebFontConfig = {
+  var WebFontConfig = {
     google: { families: [ 'Roboto+Slab:300,400,700:latin', 'Roboto:300,400,700,300:latin' ] }
   };
   (function() {
