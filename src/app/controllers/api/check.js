@@ -7,10 +7,8 @@ import io from 'socket.io';
 import message from '../../lib/messages';
 
 var router = express.Router();
-var jsonParser = bodyParser.json();
 
-function testResources(url,socket){
-  var url = url;
+function testResources(url, socket){
 
   phantom.create(function (ph) {
     ph.createPage(function (page) {
@@ -113,7 +111,6 @@ module.exports = function (app) {
     socket.on('newurl', function (data) {
       runTests(data.url,socket);
       console.log(data);
-      //socket.emit('message', data);
     });
 
   });
