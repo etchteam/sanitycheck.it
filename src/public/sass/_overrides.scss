@@ -1,0 +1,43 @@
+.lead, h2 {
+  font-family: $font-sans;
+}
+
+h1,h2,h3,h4,h5,h6, main header h2, main header .lead, main header h1 {
+  color: #fff;
+}
+
+main.wrapper {
+
+  header::after {
+    background: #FFF;
+  }
+}
+
+input, input:focus {
+  color: #333;
+}
+
+main.wrapper header {
+  text-align: center;
+}
+
+::-webkit-input-placeholder {
+  opacity: 1;
+  color: transparentize(#333,0.5);
+}
+:-moz-placeholder { /* Firefox 18- */
+  opacity: 1;
+  color: transparentize(#333,0.5);
+}
+::-moz-placeholder {  /* Firefox 19+ */
+  opacity: 1;
+  color: transparentize(#333,0.5);
+}
+:-ms-input-placeholder {
+  opacity: 1;
+  color: transparentize(#333,0.5);
+}
+::placeholder {
+  opacity: 1;
+  color: transparentize(#333,0.5);
+}

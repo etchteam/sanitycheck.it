@@ -1,6 +1,8 @@
 export default function(){
   var WebFontConfig = {
-    google: { families: [ 'Roboto+Slab:300,400,700:latin', 'Roboto:300,400,700,300:latin' ] }
+    custom: {
+      families: ['cooper_hewittbold','cooper_hewittbook','cooper_hewittmedium']
+    }
   };
   (function() {
     var wf = document.createElement('script');
