@@ -9,3 +9,4 @@ app/lib
 public/js
 public/css
 npm-debug.log
+.DS_Store
