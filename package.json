@@ -6,6 +6,10 @@
     "postinstall": "grunt prod",
     "start": "node app/app.js"
   },
+  "engines": {
+    "node": "4.2.1",
+    "npm": "3.3.12"
+  },
   "dependencies": {
     "body-parser": "^1.14.1",
     "compression": "^1.5.2",
