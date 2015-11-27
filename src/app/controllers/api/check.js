@@ -83,12 +83,32 @@ function testResources(url,socket){
 
             if (contentType.match(imagePattern)) {
               img++;
+              socket.emit('message', {
+                status: 'success',
+                results: [
+                  { name: 'images', pass: true, value: img, message: message('img', img) }
+                ]});
             } else if (contentType.match(cssPattern)) {
               css++;
+              socket.emit('message', {
+                status: 'success',
+                results: [
+                  { name: 'css', pass: css < 4, value: css, message: message('css', css) }
+                ]});
             } else if (contentType.match(jsPattern)) {
               js++;
+              socket.emit('message', {
+                status: 'success',
+                results: [
+                  { name: 'js', pass: js < 4, value: js, message: message('js', js) }
+                ]});
             } else if (contentType.match(fontPattern)) {
               fonts++;
+              socket.emit('message', {
+                status: 'success',
+                results: [
+                  { name: 'fonts', pass: true, value: fonts, message: message('fonts', fonts) }
+                ]});
             }
 
             return true;
@@ -144,7 +164,7 @@ module.exports = function (app) {
     socket.on('newurl', function (data) {
       runTests(data.url,socket);
       console.log(data);
-      socket.emit('message', data);
+      //socket.emit('message', data);
     });
 
   });
