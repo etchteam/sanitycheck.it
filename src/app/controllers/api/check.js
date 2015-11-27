@@ -1,14 +1,21 @@
 import express from 'express';
 import path from 'path';
-import childProcess from 'child_process';
 import phantom from 'phantom';
-import bodyParser from 'body-parser';
+import phantomjs from 'phantomjs';
 import io from 'socket.io';
 import message from '../../lib/messages';
 
 var router = express.Router();
 
-function testResources(url, socket){
+function testResources(url, socket) {
+
+  var options = {
+    path: path.normalize(phantomjs.path + '/..' + '/'),
+    parameters: {
+      'ignore-ssl-errors': 'yes',
+      'ssl-protocol': 'any'
+    }
+  };
 
   phantom.create(function (ph) {
     ph.createPage(function (page) {
@@ -88,8 +95,7 @@ function testResources(url, socket){
         }
       });
     });
-
-  });
+  }, options);
 }
 
 function runTests(url,socket) {
@@ -110,7 +116,6 @@ module.exports = function (app) {
 
     socket.on('newurl', function (data) {
       runTests(data.url,socket);
-      console.log(data);
     });
 
   });
