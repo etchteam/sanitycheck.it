@@ -9,6 +9,17 @@ var jsonParser = bodyParser.json();
 
 module.exports = function (app) {
   app.use('/', router);
+  app.use(function (req, res, next) {
+    console.log('middleware');
+    req.testing = 'testing';
+    return next();
+  });
+  app.ws('/api/check', function(ws, req) {
+    ws.on('message', function(msg) {
+      console.log(msg);
+    });
+    console.log('socket', req.testing);
+  });
 };
 
 router.post('/api/check', jsonParser, function (req, res, next) {
@@ -29,5 +40,8 @@ router.post('/api/check', jsonParser, function (req, res, next) {
         }
       });
     });
+
   });
 });
+
+

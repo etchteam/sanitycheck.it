@@ -10,3 +10,19 @@ WebFontConfig = {
   var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(wf, s);
 })();
+
+var WebSocket = require('ws');
+var ws = new WebSocket('ws://localhost:3000/api/check');
+
+console.log(ws);
+
+ws.onopen = function open(e) {
+  console.log('ws open');
+  ws.send('something');
+};
+
+ws.onmessage = function(data, flags) {
+  // flags.binary will be set if a binary data is received.
+  // flags.masked will be set if the data was masked.
+  console.log(data,flags);
+};

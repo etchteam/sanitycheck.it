@@ -31,6 +31,7 @@
     "phantomjs": "^1.9.19",
     "redbullet-styleguide": "git+ssh://git@bitbucket.org/redbullet/red-bullet-styleguide.git",
     "request": "^2.60.0",
-    "time-grunt": "^1.2.1"
+    "time-grunt": "^1.2.1",
+    "ws": "^0.8.0"
   }
 }
