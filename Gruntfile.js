@@ -56,6 +56,17 @@ module.exports = function (grunt) {
         }
       }
     },
+    uglify: {
+      dist: {
+        options: {
+          sourceMap: true,
+          sourceMapName: 'public/js/main.js.map'
+        },
+        files: {
+          'public/js/main.min.js': ['public/js/main.js']
+        }
+      }
+    },
     watch: {
       options: {
         nospawn: true,
@@ -65,7 +76,13 @@ module.exports = function (grunt) {
         files: [
           'src/**/*.js'
         ],
-        tasks: ['babel', 'browserify','develop']
+        tasks: ['babel', 'browserify']
+      },
+      uglify: {
+        files: [
+          'public/js/main.min-js'
+        ],
+        tasks: ['uglify','develop']
       },
       css: {
         files: [
@@ -108,6 +125,7 @@ module.exports = function (grunt) {
     'sass',
     'babel',
     'browserify',
+    'uglify',
     'develop',
     'watch'
   ]);
@@ -115,6 +133,7 @@ module.exports = function (grunt) {
   grunt.registerTask('prod', [
     'sass',
     'babel',
-    'browserify'
+    'browserify',
+    'uglify'
   ]);
 };
