@@ -9,6 +9,8 @@ export default function (name, value) {
         score = 1;
       } else if (value <= 4) {
         score = 2;
+      } else {
+        score = 3;
       }
       break;
     case 'images':
@@ -16,6 +18,8 @@ export default function (name, value) {
         score = 1;
       } else if (value <= 20) {
         score = 2;
+      } else {
+        score = 3;
       }
       break;
     case 'load':

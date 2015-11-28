@@ -1,13 +1,13 @@
 var messages = {
   css: {
-    1: 'Sweet! You do css well!',
-    2: 'Eh, got some room for improvement dude.',
-    3: 'Esch, doing it wrong.'
+    1: 'Nice, not too many CSS files.',
+    2: 'Look at concatonating your CSS for faster page load.',
+    3: 'This is loading too many CSS files!'
   },
   js: {
-    1: 'Hell yeah, keep it minimal!',
-    2: 'Not bad!',
-    3: "Aw no, this isn't good :("
+    1: 'Awesome, you don\'t load too many JS files',
+    2: 'See if you can group your JS files for faster page load',
+    3: "You are loading too many JS files, it\'s gonna make your page slow."
   },
   images: {
     1: 'Nice, not too many images :)',
@@ -17,25 +17,25 @@ var messages = {
   fonts: {
     1: 'Wicked, not too heavy on the fonts dude.',
     2: 'Do you really need that many fonts?',
-    3: 'For real?!?!'
+    3: 'You have too many fonts. it\'s slowing your page down.'
   },
   load: {
-    0: 'Looking for a job...?',
+    0: 'Wow that was fast! Looking for a job...?',
     1: 'Sweet! Fast sites are good sites!',
-    2: "Not bad, but could do with some improvement. At 4 seconds you're losing 25% of your visitors before the page loads",
+    2: "At 4 seconds you're losing 25% of your visitors before the page loads",
     3: 'You know, slow pages are bad for everyone, you really should look at improving this',
     4: 'Oh god... Yeah, you need some help here.'
   },
   html5: {
     4: 'Your HTML could do with updating',
-    0: 'Yay, we love HTML5!'
+    0: 'Yay, we love HTML5! Nice and mordern'
   },
   responsive: {
     4: 'Your site is not mobile ready',
     0: 'Nice mobile ready site'
   },
   accessible: {
-    4: 'Your site needs to be made more accessible for disabled people',
+    4: 'Your site needs to be made more accessible for people with diabilities',
     0: 'Nice accessibility work'
   }
 };
