@@ -1,0 +1,92 @@
+.collapse-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.collapse-item {
+  border-bottom: $ui-border-color solid $ui-border-width;
+  position: relative;
+  overflow: hidden;
+
+  &:first-child,
+  &:target + .collapse-item {
+    border-top: $ui-border-color solid $ui-border-width;
+  }
+
+  &:target {
+    background: $color-brand-light;
+    padding: $padding-v * 1.5 $padding-h-fluid $padding-v;
+    margin-bottom: $spacing-v;
+    margin-left: -$spacing-h-fluid;
+    margin-right: -$spacing-h-fluid;
+    border: 0 none;
+
+    @include bp-1 {
+      border-radius: $ui-border-radius;
+    }
+
+    .collapse-item + & {
+      margin-top: $spacing-v;
+    }
+  }
+}
+
+.collapse-content {
+  height: 0;
+
+  .collapse-item:target & {
+    height: auto;
+  }
+
+  &::before {
+    content: '+';
+    display: inline-block;
+    position: absolute;
+    top: 1.125rem;
+    right: .5rem;
+    height: 1em;
+    width: 1em;
+    border: $ui-border-color solid;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 1;
+    font-weight: bold;
+    opacity: .5;
+    z-index: 0;
+    transform: scale(1);
+    transition: opacity, transform $ui-transition;
+
+    .collapse-item:hover & {
+      color: $link-color;
+      opacity: .75;
+    }
+
+    .collapse-item:target & {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
+}
+
+.collapse-title {
+  font-family: $font-sans;
+  position: relative;
+  z-index: 1;
+
+  a {
+    display: block;
+    padding: 1rem 3rem 1rem 0;
+    position: relative;
+    color: $base-color-dark;
+
+    &:hover {
+      color: $link-color;
+    }
+
+    .collapse-item:target & {
+      color: $base-color-dark;
+      cursor: default;
+    }
+  }
+}

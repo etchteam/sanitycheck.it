@@ -1,0 +1,58 @@
+
+button,
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  padding: $padding-v $padding-h * 1.5;
+  line-height: 1;
+  border: $ui-border-width solid;
+  border-radius: $ui-border-radius-large;
+  background-color: transparent;
+  font-size: 1em;
+  margin-right: $spacing-h / 2;
+  margin-bottom: $spacing-v;
+  text-decoration: none;
+  color: inherit;
+  transition: transform $ui-transition;
+  transform: scale(1);
+
+  &:hover,
+  &:focus {
+    color: $color-brand-primary;
+    text-decoration: none;
+  }
+
+  &:active {
+    opacity: .75;
+    transform: scale(.975);
+  }
+
+  &:disabled,
+  &.disabled {
+    cursor: not-allowed;
+    opacity: .5;
+  }
+}
+
+.btn-primary {
+  color: #fff;
+  background: $color-brand-primary;
+  border-color: transparent;
+  font-weight: 700;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background: darken($color-brand-primary, 5%);
+  }
+}
+
+button[type=submit] {
+  @extend .btn-primary;
+}
+
+
+.btn-block {
+  display: block;
+  margin-right: 0;
+}

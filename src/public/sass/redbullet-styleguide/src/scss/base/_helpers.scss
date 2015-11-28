@@ -1,0 +1,39 @@
+.clearfix,
+%clearfix {
+  &::after {
+    content:"";
+    display:table;
+    clear:both;
+  }
+}
+
+
+.small,
+.text-small {
+  font-size: .75em;
+}
+
+.large,
+.text-large {
+  font-size: 1.25em;
+}
+
+.text-serif {
+  font-family: $font-serif;
+}
+
+.text-voice {
+  font-family: $font-serif;
+  font-size: .875em;
+  color: $base-color-light;
+  font-weight: normal;
+  line-height: $line-height;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: $base-color-light;
+}

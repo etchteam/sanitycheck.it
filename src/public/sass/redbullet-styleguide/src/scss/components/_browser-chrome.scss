@@ -1,0 +1,38 @@
+$browser-border-color: $base-color-light;
+$browser-border-width: $ui-border-width;
+
+.browser-chrome {
+  border: $browser-border-width solid $browser-border-color;
+  border-radius: $ui-border-radius;
+  position: relative;
+
+  &::before,
+  &::after  {
+    content: '';
+    display: inline-block;
+    font-size: .5em;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: $browser-border-width solid $browser-border-color;
+    position: absolute;
+    top: .375em;
+    background: $color-brand-light;
+  }
+
+  &::before {
+    left: .5em;
+  }
+
+  &::after {
+    left: 2em;
+  }
+
+  img {
+    margin-top: $spacing-v;
+    border-top: $browser-border-width solid $browser-border-color;
+    background: #fff;
+    border-bottom-left-radius: $ui-border-radius / 2;
+    border-bottom-right-radius: $ui-border-radius / 2;
+  }
+}

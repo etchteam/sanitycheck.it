@@ -1,0 +1,62 @@
+h1,h2,h3,h4,h5,h6 {
+  line-height: 1.25;
+  margin: 0;
+  color: $base-color-dark;
+  font-weight: 700;
+  font-family: $font-serif;
+
+  & + p {
+    margin-top: $spacing-v /2;
+  }
+}
+
+h1 {
+  font-size: 1.75em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+h4 {
+  font-size: 1.125em;
+}
+
+h5, h6 {
+  font-size: 1em;
+}
+
+main header {
+  @include scale-up();
+
+  h1 {
+    font-weight: 700;
+    letter-spacing: -.025em;
+    line-height: 1.125;
+    color: $color-brand-primary;
+  }
+
+  h2, .lead {
+    font-weight: 300;
+    color: $color-brand-primary;
+    font-family: $font-sans;
+    margin-top: .25em;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+
+.section-title {
+  font-size: 1em;
+  text-transform: uppercase;
+  opacity: .5;
+  font-weight: 400;
+  margin: $spacing-v * 4 0 $spacing-v * 2;
+}

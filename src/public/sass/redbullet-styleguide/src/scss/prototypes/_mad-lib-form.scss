@@ -1,0 +1,29 @@
+.mad-lib-form {
+  font-family: $font-serif;
+  text-align: center;
+
+  input, select, textarea {
+    text-align: center;
+    border: $ui-border-width dotted $ui-border-color;
+    border-width: 0 0 $ui-border-width 0;
+    background: none;
+    display: inline-block;
+    width: 100%;
+    border-radius: 0;
+    font-family: $font-sans;
+
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+  }
+
+  .rb-voice {
+    font-family: $font-serif;
+    color: $color-brand-primary;
+  }
+
+  .decision-target {
+    display: none;
+  }
+}

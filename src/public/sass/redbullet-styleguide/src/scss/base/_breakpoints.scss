@@ -1,0 +1,45 @@
+$bp-1: 40em;
+$bp-2: 60em;
+$bp-3: 80em;
+
+@mixin bp-1 {
+  @media (min-width: #{$bp-1}) {
+    @content;
+  }
+}
+
+@mixin bp-2 {
+  @media (min-width: #{$bp-2}) {
+    @content;
+  }
+}
+
+@mixin bp-3 {
+  @media (min-width: #{$bp-3}) {
+    @content;
+  }
+}
+
+@mixin scale-up {
+
+  @media (min-width: #{$bp-1}) {
+    font-size: 1.125em;
+  }
+
+  @media (min-width: #{$bp-2}) {
+    font-size: 1.25em;
+  }
+
+}
+
+@mixin hires {
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (   min--moz-device-pixel-ratio: 1.5),
+  only screen and (     -o-min-device-pixel-ratio: 1.5/1),
+  only screen and (        min-device-pixel-ratio: 1.5),
+  only screen and (                min-resolution: 144dpi),
+  only screen and (                min-resolution: 1.5dppx) {
+    @content;
+  }
+}

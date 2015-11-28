@@ -1,0 +1,53 @@
+.list-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 $spacing-v;
+  @extend %clearfix;
+
+  li {
+    margin-bottom: 5%;
+  }
+
+  @include bp-1 {
+    margin: 0 -2.5%;
+
+    li {
+      width: 50%;
+      padding: 0 2.5%;
+      float: left;
+    }
+
+    li:nth-child(2n+1) {
+      clear:both;
+    }
+  }
+
+  @include bp-2 {
+    li {
+      width: 33.333333%;
+    }
+
+    li:nth-child(2n+1) {
+      clear: none;
+    }
+
+    li:nth-child(3n+1) {
+      clear: both;
+    }
+  }
+
+  @include bp-3 {
+    li {
+      width: 25%;
+    }
+
+    li:nth-child(2n+1),
+    li:nth-child(3n+1) {
+      clear: none;
+    }
+
+    li:nth-child(4n+1) {
+      clear: both;
+    }
+  }
+}

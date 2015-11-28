@@ -1,0 +1,17 @@
+.title-bar {
+  text-align: center;
+  padding: $spacing-v * 2 $spacing-h;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  opacity: .5;
+  min-width: $base-min-width;
+}
+
+.title-bar-heading {
+  font-size: 1.6rem;
+  font-family: $font-sans;
+  font-weight: 400;
+}

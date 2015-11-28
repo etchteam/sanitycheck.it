@@ -1,0 +1,77 @@
+.callout {
+  margin-bottom: $spacing-v;
+  @extend %clearfix;
+}
+
+.callout-right {
+  text-align: right;
+}
+
+.callout-content {
+  position: relative;
+  padding: 2.5% 5%;
+  display: inline-block;
+  float: left;
+  clear: both;
+
+  .callout-right & {
+    float: right;
+  }
+
+  // Radius
+  border-radius: $ui-border-radius-large;
+  border-bottom-left-radius: 0;
+
+  + .callout-content {
+    border-top-left-radius: 0;
+    margin-top: $spacing-v / 4;
+  }
+
+  .callout-right & {
+    border-bottom-left-radius: $ui-border-radius-large;
+    border-bottom-right-radius: 0;
+
+    + .callout-content {
+      border-top-left-radius: 0;
+      border-top-right-radius: $ui-border-radius-large;
+    }
+  }
+
+  // Skin
+  @extend %skin-light;
+
+  .callout-primary & {
+    @extend %skin-brand;
+  }
+
+  > * {
+    margin-bottom: 0;
+  }
+}
+
+.callout-footer {
+  clear: both;
+  font-size: .875em;
+  padding: $padding-v 0;
+  color: $base-color-light;
+  line-height: 2em;
+
+  .avatar {
+    width: 2em;
+    float: left;
+    margin: 0 $spacing-h / 2 0 0;
+  }
+}
+
+.callout-right {
+  .avatar {
+    float: right;
+    margin:  0 0 0 $spacing-h / 2;
+  }
+}
+
+.callout-media {
+  padding: 0;
+  overflow: hidden;
+  max-width: 50%;
+}

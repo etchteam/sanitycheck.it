@@ -1,0 +1,21 @@
+.media-block {
+  @extend %clearfix;
+
+  img {
+    float: left;
+    width: 20%;
+    margin-right: $spacing-h;
+  }
+
+  @include bp-1 {
+
+    .list-grid & {
+      text-align: center;
+
+      img {
+        width: 100%;
+        margin: 0 0 $spacing-v;
+      }
+    }
+  }
+}

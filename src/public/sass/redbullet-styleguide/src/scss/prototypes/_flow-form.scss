@@ -1,0 +1,53 @@
+// Flow form
+
+.flow-form {
+  input[type="radio"] {
+    display: none;
+  }
+}
+
+.flow-form-questions {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.flow-form-item {
+  //opacity: 0.5;
+  margin-bottom: $spacing-v;
+  overflow: auto;
+  transition: opacity .2s, font-size .2s;
+  font-size: .8em;
+
+  &.is-active {
+    opacity: 1;
+    font-size: 1em;
+
+    ~ .flow-form-item {
+      display: none;
+    }
+  }
+}
+
+.flow-form-contact {
+  input {
+    border-width: 0 0 $ui-border-width 0;
+    border-radius: 0;
+    display: inline-block;
+    width: auto;
+  }
+}
+
+.flow-form-choice {
+  display: block;
+  float: left;
+  width: 49%;
+  margin-right: .5%;
+  padding: $padding-v $padding-h;
+  @extend %skin-light;
+  cursor: pointer;
+
+  :checked + & {
+    @extend %skin-brand;
+  }
+}

@@ -1,0 +1,9 @@
+.brag-block {
+  .lead {
+    color: $color-brand-primary;
+  }
+
+  @include bp-2 {
+    text-align: center;
+  }
+}

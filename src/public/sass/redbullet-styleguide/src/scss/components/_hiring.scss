@@ -1,0 +1,122 @@
+@keyframes swing {
+  0%, 100% {
+    transform: rotate(-2.5deg);
+  }
+
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes drop {
+  0%, 20% {
+    transform: translate(0,0) rotate(0deg);
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(0,500%) rotate(-10deg);
+    opacity: 0;
+  }
+}
+
+.hiring-wrap {
+  position: relative;
+  &:before {
+    content: "You show promise!";
+    display: block;
+    position: absolute;
+    top: pxtoem(80);
+    left: 50%;
+    margin-left: -4em;
+    text-align: center;
+    font-size: 1em;
+    background: url(../images/thumb.svg) center top no-repeat;
+    background-size: auto 50%;
+    color: #ccc;
+    padding: $padding-v*5 0 $padding-v;
+  }
+  .hiring-inner {
+    max-width: pxtoem(245);
+    margin: auto;
+    padding-top: pxtoem(75);
+    position: relative;
+    margin-bottom: $spacing-v * 2;
+    transform-origin: top center;
+    @include animation(swing, 5s, ease-in-out);
+
+    &:after {
+      content: "";
+      border: $color-brand-primary solid $ui-border-width;
+      background: #fff;
+      border-radius: 50%;
+      width: .5em;
+      height: .5em;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -.25em;
+    }
+
+    &:before {
+      content: "";
+      border: $color-brand-primary solid $ui-border-width;
+      border-width: $ui-border-width 0 0 $ui-border-width;
+      position: absolute;
+      left: 50%;
+      top: 0;
+      margin-left: .125em;
+      transform-origin: top left;
+      transform: rotate(45deg);
+      width: pxtoem(sqrt(75*75+75*75));
+      height: pxtoem(sqrt(75*75+75*75));
+      transition: opacity .1s ease;
+    }
+  }
+
+
+  &.hiring-no-string {
+
+    .hiring-inner:before {
+      opacity: 0;
+    }
+
+    .hiring-sign {
+      @include animation(drop, .5s, ease-in);
+      animation-iteration-count: 1;
+    }
+  }
+
+
+}
+
+.hiring-sign {
+  padding: $padding-v*2 $padding-h*2 $padding-v*3;
+  border-radius: $ui-border-radius;
+  background: $color-brand-primary;
+  text-align: left;
+}
+
+.hiring-text {
+  color: #fff;
+  font-size: 1em;
+
+  span {
+    display: block;
+    line-height: 1;
+  }
+}
+
+.hiring-text-small {
+  font-weight: 400;
+}
+
+.hiring-text-large {
+  font-size: 3.5em;
+  text-transform: capitalize;
+}

@@ -1,0 +1,16 @@
+// Get square root of a number
+@function sqrt($r) {
+  $x0: 1;
+  $x1: $x0;
+
+  @for $i from 1 through 10 {
+    $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+    $x0: $x1;
+  }
+
+  @return $x1;
+}
+
+@function pxtoem($px) {
+  @return $px/$font-size*1em;
+}

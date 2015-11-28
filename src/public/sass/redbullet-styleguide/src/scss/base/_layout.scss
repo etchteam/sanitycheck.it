@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: darken($color-brand-light, 2.5%);
+}
+
+body {
+  min-width: $base-min-width;
+  max-width: $base-max-width;
+  margin: 0 auto;
+  background-color: $base-bg;
+}
+
+main {
+  min-height: 100vh;
+  @include scale-up;
+
+  .js & {
+    opacity: 0;
+    transition: opacity .25s $ui-transition-effect;
+  }
+
+  .no-js &,
+  .wf-active &,
+  .wf-failed &,
+  .wf-slow &  {
+    opacity: 1;
+  }
+}
+
+main.wrapper {
+  padding-top: 4.5em;
+  padding-bottom: 10%;
+
+  header {
+    padding: $padding-v * 2 0;
+    margin-bottom: $spacing-v * 2;
+
+    &::after {
+      content: '';
+      display: block;
+      position: relative;
+      bottom: -$padding-v * 2;
+      height: $ui-border-width;
+      background: $color-brand-primary;
+      width: $ui-border-radius;
+      border-radius: $ui-border-radius;
+      transition: width .5s .25s $ui-transition-effect;
+
+      .no-js &,
+      .wf-active &,
+      .wf-failed &,
+      .wf-slow &  {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.wrapper {
+  padding: 5%;
+  margin: 0 auto;
+  max-width: $line-length;
+  box-sizing: content-box;
+
+  @include bp-2 {
+    .outset {
+      padding: $padding-v-fluid;
+      margin: 0 -15%;
+    }
+  }
+}
+
+.page-section {
+  padding: $padding-v-fluid $padding-h-fluid;
+}
+
+footer {
+  text-align: center;
+  padding: 5%;
+  color: $base-color-light;
+  background: $color-brand-light;
+}

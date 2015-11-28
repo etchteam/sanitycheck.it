@@ -1,0 +1,35 @@
+.hero {
+  text-align: center;
+  padding: 4em 5% 2em;
+  margin-bottom: $spacing-v;
+
+  h1 {
+    margin-bottom: $spacing-v/4;
+  }
+
+  h1 img {
+    max-width: 25em;
+    margin: 0 auto $spacing-v/2;
+    padding: 0 $padding-v-fluid;
+  }
+
+  h2, .lead {
+    max-width: 28em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.hero-title {
+  color: $color-brand-primary;
+  font-size: 2em;
+
+  @include bp-1 {
+    font-size: 3em;
+    letter-spacing: -.05em;
+  }
+
+  @include bp-2 {
+    font-size: 4em;
+  }
+}

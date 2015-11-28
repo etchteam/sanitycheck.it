@@ -1,0 +1,138 @@
+// ------------ Menu overlay
+
+.proto-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: $padding-v $padding-h;
+}
+
+.proto-menu-overlay-trigger {
+  width: 5em;
+  height: 5em;
+  display: block;
+  position: relative;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 21%;
+    left: 50%;
+    width: 1em;
+    height: 1em;
+    background: $color-brand-primary;
+    border-radius: 50%;
+    transition: width .3s ease, height .3s ease;
+    transform: translate(-50%,-50%);
+  }
+}
+
+.proto-menu-overlay-inner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transform: translate(0,-100%);
+}
+
+.proto-menu-overlay-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 15em;
+  height: 15em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+
+  .icon {
+    position: absolute;
+    background: rgba(255,255,255,0.2);
+    width: 20%;
+    height: 20%;
+    display: block;
+    border-radius: 50%;
+    transition: background .2s ease;
+  }
+
+  li {
+    &:nth-child(1) .icon {
+      top: 11%;
+      left: 40%;
+    }
+
+    &:nth-child(2) .icon {
+      top: 26%;
+      right: 16%;
+    }
+
+    &:nth-child(3) .icon {
+      bottom: 26%;
+      right: 15%;
+    }
+
+    &:nth-child(4) .icon {
+      left: 40%;
+      bottom: 11%;
+    }
+
+    &:nth-child(5) .icon {
+      bottom: 26%;
+      left: 15%;
+    }
+
+    &:nth-child(6) .icon {
+      top: 26%;
+      left: 15%;
+    }
+  }
+
+  span {
+    display: none;
+  }
+}
+
+.proto-menu-overlay.is-open {
+  .proto-menu-overlay-inner {
+    transform: translate(0,0);
+  }
+
+  .proto-menu-overlay-trigger {
+    &:after {
+      width: sqrt(200*200*2)*1vw;
+      height: sqrt(200*200*2)*1vw;
+    }
+  }
+
+  .proto-menu-overlay-links {
+    span {
+      display: block;
+      color: $color-brand-light;
+      opacity: 0;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      transition: opacity .25s $ui-transition-effect;
+    }
+
+    .icon:hover {
+      background: rgba(255,255,255,0.3);
+
+      + span {
+        opacity: 1;
+      }
+    }
+  }
+
+}

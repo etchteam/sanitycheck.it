@@ -1,0 +1,33 @@
+.card {
+  padding: 5%;
+  margin: 0 0 $spacing-v;
+  display: block;
+  border-radius: $ui-border-radius;
+  border: $ui-border-width solid transparent;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+a.card,
+a.card:visited {
+  color: inherit;
+  transition: border-color $ui-transition;
+
+  &:hover,
+  &:focus, {
+    opacity: .875;
+    border-color: $link-color;
+  }
+}
+
+.card.btn {
+  font-size: inherit;
+  font-weight: normal;
+}
+
+[class^="card"],
+[class^="card btn"] {
+  border-color: $ui-border-color;
+}

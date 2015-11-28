@@ -1,0 +1,21 @@
+.image-group {
+  //table-layout: fixed; GM - Allow different width images to flow
+  vertical-align: middle;
+  display: table;
+  width: 100%;
+  max-width: 120vh;
+  margin: 0 auto;
+
+  ul {
+    display: table-row;
+  }
+
+  li {
+    display: table-cell;
+    padding: .125em;
+  }
+
+  img {
+    border-radius: $ui-border-radius;
+  }
+}

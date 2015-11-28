@@ -1,0 +1,61 @@
+.skin-brand,
+%skin-brand {
+  background: $color-brand-primary;
+  color: #fff;
+}
+
+.skin-brand-inverted,
+%skin-brand-inverted {
+  background: #fff;
+  color: $color-brand-primary;
+}
+
+.skin-dark,
+%skin-dark  {
+  background-color: $color-brand-dark;
+  color: $color-brand-light;
+}
+
+.skin-light,
+%skin-light {
+  background-color: $color-brand-light;
+  color: $color-brand-dark;
+}
+
+.skin-warning,
+%skin-warning {
+  background-color: $color-comms-warning;
+  color: $color-brand-dark;
+}
+
+.skin,
+[class^="skin-"] {
+
+  h1,h2,h3,h4,h5,h6,.btn,a {
+    color: inherit;
+  }
+
+  p a {
+    text-decoration: underline;
+  }
+
+  a:hover,
+  a:focus {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  [class*="btn"] {
+    &:hover,
+    &:focus {
+      opacity: .85;
+    }
+  }
+}
+
+
+.skin-brand {
+  .btn-primary {
+    @extend %skin-brand-inverted;
+  }
+}

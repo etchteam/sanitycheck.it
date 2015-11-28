@@ -1,0 +1,36 @@
+img, svg {
+  display: block;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+}
+
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+[class*="image-"] {
+  @extend .clearfix;
+}
+
+.image-duo,
+.image-trio {
+  img {
+    float: left;
+  }
+}
+
+.image-duo {
+  img {
+    width: 50%;
+  }
+}
+
+.image-trio {
+  img {
+    width: 30%;
+  }
+}

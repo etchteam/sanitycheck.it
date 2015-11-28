@@ -1,0 +1,147 @@
+$context-border-style: $ui-border-width solid $ui-border-color;
+
+.context-display {
+  border: $context-border-style;
+  position: relative;
+  margin: $spacing-v 0;
+  background: #fff;
+  display: inline-block;
+
+  img {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+  }
+
+}
+
+.context-browser {
+  border-top-right-radius: $ui-border-radius;
+  border-top-left-radius: $ui-border-radius;
+}
+
+.context-browser::before {
+  content: attr(data-url);
+  text-align: center;
+  height: 1.5em;
+  line-height: 1.5;
+  padding: $ui-border-width;
+  border-bottom: $context-border-style;
+  font-size: .75em;
+}
+
+.context-browser::after {
+  position: absolute;
+  top: .5em;
+  left: .5em;
+  height: .5em;
+  width: .5em;
+  background: $ui-border-color;
+  box-shadow: 1em 0 0 $ui-border-color, 2em 0 0 $ui-border-color;
+  border-radius: $ui-border-radius;
+}
+
+.context-phone {
+  width: 20em;
+  border-radius: 1em;
+}
+
+.context-phone img {
+  border-top: $context-border-style;
+  border-bottom: $context-border-style;
+  margin: 4em 0;
+}
+
+.context-phone::before,
+.context-phone::after {
+  position: absolute;
+  border: $context-border-style;
+}
+
+.context-phone::before {
+  top: 1.5em;
+  width:20%;
+  left:40%;
+  height: .5em;
+  margin-left: -.25em;
+  border-radius: 1em;
+}
+
+.context-phone::after {
+  bottom: .75em;
+  width:2em;
+  left: 50%;
+  height: 2em;
+  margin-left: -1.25em;
+  border-radius: 2em;
+}
+
+
+.context-tablet {
+  padding: 2em 4em;
+  border-radius: 1em;
+}
+
+.context-tablet img {
+  border: $context-border-style;
+}
+
+.context-tablet::before {
+  position: absolute;
+  height: .5em;
+  width: .5em;
+  top: 50%;
+  margin-top: -.5em;
+  border: $context-border-style;
+  left: 1.5em;
+  border-radius: 1em;
+}
+
+.context-phone::before {
+  top: 1.5em;
+  width:20%;
+  left:40%;
+  height: .5em;
+  margin-left: -.25em;
+  border-radius: 1em;
+}
+
+.context-phone::after {
+  bottom: .75em;
+  width:2em;
+  left: 50%;
+  height: 2em;
+  margin-left: -1.25em;
+  border-radius: 2em;
+}
+
+.context-tablet {
+  padding: 2em 4em;
+  border-radius: 1em;
+  max-width: 50em;
+}
+
+.context-tablet img {
+  border: $context-border-style;
+}
+
+.context-tablet::after {
+  position: absolute;
+  height: 1.5em;
+  width: 1.5em;
+  top: 50%;
+  margin-top: -.75em;
+  border: $context-border-style;
+  right: .75em;
+  border-radius: 1em;
+}
+
+.context-document {
+  box-shadow: .125em .125em 0 rgba(0,0,0,.025);
+}

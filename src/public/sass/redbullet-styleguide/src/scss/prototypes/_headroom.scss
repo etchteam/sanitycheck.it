@@ -1,0 +1,59 @@
+// ----------- Headroom show/hide
+
+@keyframes lock-n-load {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  80% {
+    transform: rotate(390deg);
+  }
+
+  95% {
+    transform: rotate(350deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.proto-headroom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: $padding-v $padding-h;
+  transform-origin: left top;
+  transition: transform .4s $ui-transition-effect;
+
+  &.is-hidden {
+    transform: rotate(-180deg);
+  }
+}
+
+.proto-headroom-trigger {
+  width: 5em;
+  display: block;
+  transform: rotate(-60deg);
+  transition: transform .4s ease-in-out;
+  transform-origin: 50%;
+  backface-visibility: hidden; // fix jank
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  &:hover {
+    transform: rotate(0deg);
+  }
+
+  &.is-active, &.is-active:hover {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+    animation-name: lock-n-load;
+    animation-timing-function: ease;
+  }
+}
