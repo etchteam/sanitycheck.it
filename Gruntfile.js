@@ -36,6 +36,7 @@ module.exports = function (grunt) {
           'app/controllers/api/check.js': 'src/app/controllers/api/check.js',
           'app/config/config.js': 'src/app/config/config.js',
           'app/config/express.js': 'src/app/config/express.js',
+          'app/config/setup.js': 'src/app/config/setup.js',
           'app/lib/messages.js': 'src/app/lib/messages.js',
           'app/lib/pass.js': 'src/app/lib/pass.js',
           'app/lib/score.js': 'src/app/lib/score.js',

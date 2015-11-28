@@ -1,6 +1,7 @@
 import path from 'path';
 var    rootPath = path.normalize(__dirname + '/../..');
 var    env = process.env.NODE_ENV || 'development';
+var    port = process.env.PORT || 3000;
 
 var config = {
   development: {
@@ -8,7 +9,7 @@ var config = {
     app: {
       name: 'sanitycheck-it'
     },
-    port: 3000
+    port: port
   },
 
   test: {
@@ -16,7 +17,7 @@ var config = {
     app: {
       name: 'sanitycheck-it'
     },
-    port: 3000
+    port: port
   },
 
   production: {
@@ -24,7 +25,7 @@ var config = {
     app: {
       name: 'sanitycheck-it'
     },
-    port: 3000
+    port: port
   }
 };
 

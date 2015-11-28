@@ -5,17 +5,13 @@ import css from 'dom-css';
 var socket;
 
 function openSocket(){
-  socket = io.connect('http://localhost:9000');
+  socket = io.connect(location.origin.replace(/^http/, 'ws'));
 
-  socket.on('connection', function (socket) {
-    console.log('Socket ready');
-  });
+  socket.on('connection', function (socket) { });
 
   socket.on('message', function (data) {
 
     // Put the message on the page
-    console.log(data);
-
     if (data.status == 'success' && data.results) {
       for(var i=0;i<data.results.length;i++) {
         let div = document.createElement('div'),
@@ -48,6 +44,7 @@ function openSocket(){
 function fireUrl(url){
   // Get rid of the old tests
   var results = document.querySelector('.results');
+
   while (results.firstChild) {
     results.removeChild(results.firstChild);
   }
