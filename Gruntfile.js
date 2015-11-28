@@ -28,11 +28,28 @@ module.exports = function (grunt) {
       }
     },
     babel: {
-      options: {
-        sourceMap: true,
-        presets: ['es2015']
-      },
       dist: {
+        options: {
+          sourceMap: true,
+          presets: ['es2015']
+        },
+        files: {
+          'app/app.js': 'src/app/app.js',
+          'app/controllers/site/pages.js': 'src/app/controllers/site/pages.js',
+          'app/controllers/api/check.js': 'src/app/controllers/api/check.js',
+          'app/config/config.js': 'src/app/config/config.js',
+          'app/config/express.js': 'src/app/config/express.js',
+          'app/config/setup.js': 'src/app/config/setup.js',
+          'app/lib/messages.js': 'src/app/lib/messages.js',
+          'app/lib/pass.js': 'src/app/lib/pass.js',
+          'app/lib/score.js': 'src/app/lib/score.js',
+          'app/models/result.js': 'src/app/models/result.js'
+        }
+      },
+      prod: {
+        options: {
+          presets: ['es2015']
+        },
         files: {
           'app/app.js': 'src/app/app.js',
           'app/controllers/site/pages.js': 'src/app/controllers/site/pages.js',
@@ -48,12 +65,17 @@ module.exports = function (grunt) {
       }
     },
     browserify: {
-      options: {
-        browserifyOptions: {
-          debug: true
+      dist: {
+        options: {
+          browserifyOptions: {
+            debug: true
+          }
+        },
+        files: {
+          'public/js/main.js': ['src/public/js/**/*.js']
         }
       },
-      dist: {
+      prod: {
         files: {
           'public/js/main.js': ['src/public/js/**/*.js']
         }
@@ -65,6 +87,11 @@ module.exports = function (grunt) {
           sourceMap: true,
           sourceMapName: 'public/js/main.js.map'
         },
+        files: {
+          'public/js/main.min.js': ['public/js/main.js']
+        }
+      },
+      prod: {
         files: {
           'public/js/main.min.js': ['public/js/main.js']
         }
@@ -135,8 +162,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('prod', [
     'sass',
-    'babel',
-    'browserify',
-    'uglify'
+    'babel:prod',
+    'browserify:prod',
+    'uglify:prod'
   ]);
 };
