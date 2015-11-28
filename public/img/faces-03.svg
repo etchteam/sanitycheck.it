@@ -1,16 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="69.8px"
-	 height="69.4px" viewBox="0 0 69.8 69.4" enable-background="new 0 0 69.8 69.4" xml:space="preserve">
-<g id="Layer_1" display="none">
-	<rect display="inline" fill="#2BCFC4" width="70" height="69"/>
-</g>
-<g id="Layer_2">
-	<circle fill="none" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" cx="35.1" cy="34.7" r="32.9"/>
-	<circle fill="#FFFFFF" cx="25.2" cy="25.7" r="5.6"/>
-	<circle fill="#FFFFFF" cx="44.2" cy="25.7" r="5.6"/>
-	
-		<line fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="21" y1="46" x2="50" y2="46"/>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 69.8 69.4"><circle cx="35.1" cy="34.7" r="32.9" fill="none" stroke="#FFF" stroke-width="2" stroke-miterlimit="10"/><circle cx="25.2" cy="25.7" r="5.6" fill="#FFF"/><circle cx="44.2" cy="25.7" r="5.6" fill="#FFF"/><path fill="none" stroke="#FFF" stroke-width="2" stroke-miterlimit="10" d="M21 46h29" stroke-linecap="round"/></svg>
