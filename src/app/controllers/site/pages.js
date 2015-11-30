@@ -11,9 +11,3 @@ router.get('/', function (req, res, next) {
     title: 'SanityCheck.it'
   });
 });
-
-router.get('/about', function (req, res, next) {
-  res.render('about', {
-    title: 'About'
-  });
-});

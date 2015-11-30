@@ -106,7 +106,7 @@ module.exports = function (grunt) {
         files: [
           'src/**/*.js'
         ],
-        tasks: ['babel', 'browserify']
+        tasks: ['babel', 'browserify', 'develop']
       },
       uglify: {
         files: [

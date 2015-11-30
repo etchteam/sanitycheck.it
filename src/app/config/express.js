@@ -23,6 +23,13 @@ module.exports = function(app, config) {
   }));
   app.use(cookieParser());
   app.use(compress());
-  app.use(express.static(config.root + '/public'));
+  app.use(express.static(config.root + '/public', {
+    maxAge: '1 year',
+    setHeaders: function (res, path, stat) {
+      var date = new Date();
+      date.setYear(date.getFullYear() + 1);
+      res.set('expires', date.toUTCString());
+    }
+  }));
   app.use(methodOverride());
 };
