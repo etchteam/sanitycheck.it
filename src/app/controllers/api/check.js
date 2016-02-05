@@ -38,28 +38,28 @@ function testResources(url, socket) {
               socket.emit('message', {
                 status: 'success',
                 results: [
-                  result({ name: 'images', value: img })
+                  result({ name: 'images', prettyName: 'Number of images', value: img })
                 ] });
             } else if (contentType.match(cssPattern)) {
               css++;
               socket.emit('message', {
                 status: 'success',
                 results: [
-                  result({ name: 'css', value: css })
+                  result({ name: 'css', prettyName: 'Number of CSS files', value: css })
                 ] });
             } else if (contentType.match(jsPattern)) {
               js++;
               socket.emit('message', {
                 status: 'success',
                 results: [
-                  result({ name: 'js', value: js })
+                  result({ name: 'js', prettyName: 'Number of javascript files', value: js })
                 ] });
             } else if (contentType.match(fontPattern)) {
               fonts++;
               socket.emit('message', {
                 status: 'success',
                 results: [
-                  result({ name: 'fonts', value: fonts })
+                  result({ name: 'fonts', prettyName: 'Number of fonts', value: fonts })
                 ] });
             }
 
@@ -96,10 +96,10 @@ function testResources(url, socket) {
             socket.emit('message', {
               status: 'success',
               results: [
-                result({ name: 'responsive', value: testResults.responsive || false }),
-                result({ name: 'html5', value: testResults.html5 || false }),
-                result({ name: 'accessible', value: testResults.accessible || false }),
-                result({ name: 'load', value: time })
+                result({ name: 'responsive', prettyName: 'Mobile ready', value: testResults.responsive || false }),
+                result({ name: 'html5', prettyName: 'Modern HTML', value: testResults.html5 || false }),
+                result({ name: 'accessible', prettyName: 'Accessibility', value: testResults.accessible || false }),
+                result({ name: 'load', prettyName: 'Load time', value: time })
               ] });
             ph.exit();
           });

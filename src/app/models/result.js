@@ -7,6 +7,7 @@ let options = {};
 
 export default function (opt = {}) {
   options = extend({
+    prettyName: '',
     name: '',
     pass: false,
     value: 0,
@@ -17,6 +18,10 @@ export default function (opt = {}) {
   options.score = score(options.name, options.value);
   options.message = message(options.name, options.score);
   options.pass = pass(options.name, options.value);
+
+  if (options.prettyName === '') {
+    options.prettyName = options.name;
+  }
 
   return options;
 }
