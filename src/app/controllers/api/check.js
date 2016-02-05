@@ -77,29 +77,28 @@ function testResources(url) {
 
           page.evaluate(() => {
             const testResults = {};
-            testResults.responsive = document.querySelector('[name="viewport"]') !== null;
 
             function isHtml5() {
-              if (document.doctype === null) {
+              const node = document.doctype;
+
+              if (node === null) {
                 return false;
               }
 
-              const node = document.doctype;
               const doctype = `<!DOCTYPE ${node.name}${(node.publicId ? ` PUBLIC "${node.publicId}"` : '')}${(!node.publicId && node.systemId ? ' SYSTEM' : '')}${(node.systemId ? ` "${node.systemId}"` : '')}>`;
-
               return doctype === '<!DOCTYPE html>';
             }
 
             testResults.html5 = isHtml5();
-
+            testResults.responsive = document.querySelector('[name="viewport"]') !== null;
             testResults.accessible = document.querySelector('[role]') !== null;
 
             return testResults;
           }, (testResults) => {
             const message = [
-              result({ name: 'responsive', prettyName: 'Mobile ready', value: testResults.responsive || false }),
-              result({ name: 'html5', prettyName: 'Modern HTML', value: testResults.html5 || false }),
-              result({ name: 'accessible', prettyName: 'Accessibility', value: testResults.accessible || false }),
+              result({ name: 'responsive', prettyName: 'Mobile ready', value: testResults.responsive }),
+              result({ name: 'html5', prettyName: 'Modern HTML', value: testResults.html5 }),
+              result({ name: 'accessible', prettyName: 'Accessibility', value: testResults.accessible }),
               result({ name: 'load', prettyName: 'Load time', value: time })
             ];
             sendMessage(message);
