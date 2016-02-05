@@ -1,70 +1,73 @@
-@import "fonts";
+@import 'fonts';
 @import './node_modules/normalize.css/normalize';
 @import 'variables';
-@import "./redbullet-styleguide/src/scss/mixins";
-@import "./redbullet-styleguide/src/scss/functions";
+@import './redbullet-styleguide/src/scss/mixins';
+@import './redbullet-styleguide/src/scss/functions';
 
-@import "./redbullet-styleguide/src/scss/base/breakpoints";
-@import "./redbullet-styleguide/src/scss/base/layout";
-@import "./redbullet-styleguide/src/scss/base/typography";
-@import "./redbullet-styleguide/src/scss/base/links";
-@import "./redbullet-styleguide/src/scss/base/forms";
-@import "./redbullet-styleguide/src/scss/base/tables";
-@import "./redbullet-styleguide/src/scss/base/media";
-@import "./redbullet-styleguide/src/scss/base/helpers";
+@import './redbullet-styleguide/src/scss/base/breakpoints';
+@import './redbullet-styleguide/src/scss/base/layout';
+@import './redbullet-styleguide/src/scss/base/typography';
+@import './redbullet-styleguide/src/scss/base/links';
+@import './redbullet-styleguide/src/scss/base/forms';
+@import './redbullet-styleguide/src/scss/base/tables';
+@import './redbullet-styleguide/src/scss/base/media';
+@import './redbullet-styleguide/src/scss/base/helpers';
 
 
 // UI
-@import "./redbullet-styleguide/src/scss/components/buttons";
-@import "./redbullet-styleguide/src/scss/components/nav-block";
-@import "./redbullet-styleguide/src/scss/components/alert";
-@import "./redbullet-styleguide/src/scss/components/collapse";
-@import "./redbullet-styleguide/src/scss/components/card";
-@import "./redbullet-styleguide/src/scss/components/validation";
-@import "./redbullet-styleguide/src/scss/components/skin";
-@import "./redbullet-styleguide/src/scss/components/icon";
+@import './redbullet-styleguide/src/scss/components/buttons';
+@import './redbullet-styleguide/src/scss/components/nav-block';
+@import './redbullet-styleguide/src/scss/components/alert';
+@import './redbullet-styleguide/src/scss/components/collapse';
+@import './redbullet-styleguide/src/scss/components/card';
+@import './redbullet-styleguide/src/scss/components/validation';
+@import './redbullet-styleguide/src/scss/components/skin';
+@import './redbullet-styleguide/src/scss/components/icon';
 
 // Layout
-@import "./redbullet-styleguide/src/scss/components/breakout";
-@import "./redbullet-styleguide/src/scss/components/hero";
-@import "./redbullet-styleguide/src/scss/components/title-bar";
+@import './redbullet-styleguide/src/scss/components/breakout';
+@import './redbullet-styleguide/src/scss/components/hero';
+@import './redbullet-styleguide/src/scss/components/title-bar';
 
 // Content
-@import "./redbullet-styleguide/src/scss/components/callout";
-@import "./redbullet-styleguide/src/scss/components/longform";
-@import "./redbullet-styleguide/src/scss/components/list-block";
-@import "./redbullet-styleguide/src/scss/components/list-grid";
-@import "./redbullet-styleguide/src/scss/components/media-block";
-@import "./redbullet-styleguide/src/scss/components/context";
-@import "./redbullet-styleguide/src/scss/components/browser-chrome";
-@import "./redbullet-styleguide/src/scss/components/image-group";
-@import "./redbullet-styleguide/src/scss/components/avatar";
-@import "./redbullet-styleguide/src/scss/components/syntax";
-@import "./redbullet-styleguide/src/scss/components/hiring";
-@import "./redbullet-styleguide/src/scss/components/brag-block";
-@import "./redbullet-styleguide/src/scss/components/icon-title";
+@import './redbullet-styleguide/src/scss/components/callout';
+@import './redbullet-styleguide/src/scss/components/longform';
+@import './redbullet-styleguide/src/scss/components/list-block';
+@import './redbullet-styleguide/src/scss/components/list-grid';
+@import './redbullet-styleguide/src/scss/components/media-block';
+@import './redbullet-styleguide/src/scss/components/context';
+@import './redbullet-styleguide/src/scss/components/browser-chrome';
+@import './redbullet-styleguide/src/scss/components/image-group';
+@import './redbullet-styleguide/src/scss/components/avatar';
+@import './redbullet-styleguide/src/scss/components/syntax';
+@import './redbullet-styleguide/src/scss/components/hiring';
+@import './redbullet-styleguide/src/scss/components/brag-block';
+@import './redbullet-styleguide/src/scss/components/icon-title';
 
-@import "overrides";
-@import "test-result";
+@import 'overrides';
+@import 'test-result';
 
 .logo {
-  width: 80%;
+  margin: auto auto $spacing-v;
   max-width: pxtoem(275);
-  margin: auto auto $spacing-v auto;
+  width: 80%;
 }
 
 h3 {
   margin-bottom: $spacing-v;
 }
 
-.results:empty {
-  padding: $padding-large;
-  text-align: center;
-  &:after {
-    content: url('../img/ajax-loader.gif');
-  }
+.results {
+  &:empty {
+    padding: $padding-large;
+    text-align: center;
 
-  + .help-rb {
-    display: none;
+    &:after {
+      content: url('../img/ajax-loader.gif');
+    }
+
+    + .help-rb {
+      display: none;
+    }
   }
 }

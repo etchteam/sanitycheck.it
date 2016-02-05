@@ -1,57 +1,64 @@
 .test-result {
-  position: relative;
-  padding-left: 5em + $padding-h*3;
+  background: $test-result-bg;
   border: 0 none;
+  color: $test-result-color;
+  padding-left: 5em + $padding-h * 3;
+  position: relative;
 
   &:before {
+    background: $test-result-icon-bg;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 80% auto;
+    bottom: 0;
+    content: '';
     float: left;
-    content: "";
-    background: #DDD;
+    left: 0;
     padding: $padding-v $padding-h;
     position: absolute;
     top: 0;
-    left: 0;
-    bottom: 0;
     width: 5em;
-    background-position: center center;
-    background-size: 80% auto;
-    background-repeat: no-repeat;
   }
 
-  background: #FFF;
-  color: #333;
-
   h3 {
+    color: $test-result-color;
     margin-bottom: 0;
-    color: #333;
     text-transform: capitalize;
   }
 }
 
-.score-0:before, .score-1:before {
-  background-image: url('../img/faces-02.svg');
-  background-color: #089aab;
+.score-0,
+.score-1 {
+  &:before {
+    background-color: $low-score-icon-bg;
+    background-image: url('../img/faces-02.svg');
+  }
 }
 
-.score-2:before, .score-3:before {
-  background-image: url('../img/faces-03.svg');
-  background-color: #e7ae13;
+.score-2,
+.score-3 {
+  &:before {
+    background-color: $medium-score-icon-bg;
+    background-image: url('../img/faces-03.svg');
+  }
 }
 
-.score-4:before {
-  background-image: url('../img/faces-01.svg');
-  background-color: #ff6562;
+.score-4 {
+  &:before {
+    background-color: $high-score-icon-bg;
+    background-image: url('../img/faces-01.svg');
+  }
 }
 
 .redbullet {
+  color: $rb-brand-color;
+
   &:before {
+    background-color: $rb-brand-color;
     background-image: url('../img/rb-logo.svg');
-    background-color: #eb5e27;
   }
 
-  color: #eb5e27;
-
   h3 {
-    color: #eb5e27;
+    color: $rb-brand-color;
   }
 }

@@ -2,42 +2,53 @@
   font-family: $font-sans;
 }
 
-h1,h2,h3,h4,h5,h6, main header h2, main header .lead, main header h1 {
-  color: #fff;
+h1, h2, h3, h4, h5, h6 {
+  color: $base-color;
 }
 
 main.wrapper {
+  header {
+    text-align: center;
 
-  header::after {
-    background: #FFF;
+    h1, h2, .lead {
+      color: $base-color;
+    }
+
+    &::after {
+      background: $base-color;
+    }
   }
 }
 
-input, input:focus {
-  color: #333;
-}
+input {
+  color: $input-color;
 
-main.wrapper header {
-  text-align: center;
+  &:focus {
+    color: $input-color;
+  }
 }
 
 ::-webkit-input-placeholder {
+  color: transparentize($input-color, .5);
   opacity: 1;
-  color: transparentize(#333,0.5);
 }
-:-moz-placeholder { /* Firefox 18- */
+
+:-moz-placeholder { // Firefox 18-
+  color: transparentize($input-color, .5);
   opacity: 1;
-  color: transparentize(#333,0.5);
 }
-::-moz-placeholder {  /* Firefox 19+ */
+
+::-moz-placeholder {  // Firefox 19+
+  color: transparentize($input-color, .5);
   opacity: 1;
-  color: transparentize(#333,0.5);
 }
+
 :-ms-input-placeholder {
+  color: transparentize($input-color, .5);
   opacity: 1;
-  color: transparentize(#333,0.5);
 }
+
 ::placeholder {
+  color: transparentize($input-color, .5);
   opacity: 1;
-  color: transparentize(#333,0.5);
 }
