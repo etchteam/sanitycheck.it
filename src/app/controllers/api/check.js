@@ -5,8 +5,23 @@ import phantomjs from 'phantomjs';
 import result from '../../models/result';
 
 const router = express.Router();
+let webSocket;
 
-function testResources(url, socket) {
+function sendMessage(message, status = 'success') {
+  const data = {
+    status
+  };
+
+  if (Array.isArray(message)) {
+    data.results = message;
+  } else {
+    data.results = [message];
+  }
+
+  webSocket.emit('message', data);
+}
+
+function testResources(url) {
   const options = {
     path: path.normalize(`${phantomjs.path}/../`),
     parameters: {
@@ -35,32 +50,20 @@ function testResources(url, socket) {
 
             if (contentType.match(imagePattern)) {
               img++;
-              socket.emit('message', {
-                status: 'success',
-                results: [
-                  result({ name: 'images', prettyName: 'Number of images', value: img })
-                ] });
+              const message = result({ name: 'images', prettyName: 'Number of images', value: img });
+              sendMessage(message);
             } else if (contentType.match(cssPattern)) {
               css++;
-              socket.emit('message', {
-                status: 'success',
-                results: [
-                  result({ name: 'css', prettyName: 'Number of CSS files', value: css })
-                ] });
+              const message = result({ name: 'css', prettyName: 'Number of CSS files', value: css });
+              sendMessage(message);
             } else if (contentType.match(jsPattern)) {
               js++;
-              socket.emit('message', {
-                status: 'success',
-                results: [
-                  result({ name: 'js', prettyName: 'Number of javascript files', value: js })
-                ] });
+              const message = result({ name: 'js', prettyName: 'Number of javascript files', value: js });
+              sendMessage(message);
             } else if (contentType.match(fontPattern)) {
               fonts++;
-              socket.emit('message', {
-                status: 'success',
-                results: [
-                  result({ name: 'fonts', prettyName: 'Number of fonts', value: fonts })
-                ] });
+              const message = result({ name: 'fonts', prettyName: 'Number of fonts', value: fonts });
+              sendMessage(message);
             }
 
             return true;
@@ -93,37 +96,30 @@ function testResources(url, socket) {
 
             return testResults;
           }, (testResults) => {
-            socket.emit('message', {
-              status: 'success',
-              results: [
-                result({ name: 'responsive', prettyName: 'Mobile ready', value: testResults.responsive || false }),
-                result({ name: 'html5', prettyName: 'Modern HTML', value: testResults.html5 || false }),
-                result({ name: 'accessible', prettyName: 'Accessibility', value: testResults.accessible || false }),
-                result({ name: 'load', prettyName: 'Load time', value: time })
-              ] });
+            const message = [
+              result({ name: 'responsive', prettyName: 'Mobile ready', value: testResults.responsive || false }),
+              result({ name: 'html5', prettyName: 'Modern HTML', value: testResults.html5 || false }),
+              result({ name: 'accessible', prettyName: 'Accessibility', value: testResults.accessible || false }),
+              result({ name: 'load', prettyName: 'Load time', value: time })
+            ];
+            sendMessage(message);
             ph.exit();
           });
         } else {
-          socket.emit('message', {
-            status: 'failed'
-          });
+          sendMessage('', 'failed');
         }
       });
     });
   }, options);
 }
 
-function runTests(url, socket) {
-  // Put tests here
-  testResources(url, socket);
-}
-
 module.exports = (app, io) => {
   app.use('/', router);
 
   io.on('connection', (socket) => {
-    socket.on('newurl', (data) => {
-      runTests(data.url, socket);
+    webSocket = socket;
+    webSocket.on('newurl', (data) => {
+      testResources(data.url);
     });
   });
 };
