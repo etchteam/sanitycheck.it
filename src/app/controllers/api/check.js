@@ -45,6 +45,11 @@ function testResources(url) {
 
       page.set('onResourceReceived', (res) => {
         res.headers.some((header) => {
+          if (header.name === 'Last-Modified') {
+            const message = result({ name: 'updated', prettyName: 'Updated recently', value: header.value });
+            sendMessage(message);
+          }
+
           if (header.name === 'Content-Type') {
             const contentType = header.value.toLowerCase();
 
