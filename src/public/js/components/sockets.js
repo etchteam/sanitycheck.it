@@ -4,6 +4,25 @@ import css from 'dom-css';
 
 let socket;
 
+function displayResult(result) {
+  const div = document.createElement('div');
+  const h3 = document.createElement('h3');
+  const p = document.createElement('p');
+
+  elementClass(div).add(`card test-result score-${result.score} test-result-${result.name.replace(' ', '-')}`);
+  h3.innerHTML = result.name;
+  p.innerHTML = result.message;
+  div.appendChild(h3);
+  div.appendChild(p);
+
+  if (document.querySelector(`.test-result-${result.name.replace(' ', '-')}`)) {
+    document.querySelector('.results')
+            .replaceChild(div, document.querySelector(`.test-result-${result.name.replace(' ', '-')}`));
+  } else {
+    document.querySelector('.results').appendChild(div);
+  }
+}
+
 function openSocket() {
   socket = io.connect(location.origin.replace(/^http/, 'ws'));
 
@@ -13,26 +32,16 @@ function openSocket() {
     // Put the message on the page
     if (data.status === 'success' && data.results) {
       for (let i = 0; i < data.results.length; i++) {
-        const div = document.createElement('div');
-        const h3 = document.createElement('h3');
-        const p = document.createElement('p');
         const result = data.results[i];
-
-        elementClass(div).add(`card test-result score-${result.score} test-result-${result.name.replace(' ', '-')}`);
-        h3.innerHTML = result.name;
-        p.innerHTML = result.message;
-        div.appendChild(h3);
-        div.appendChild(p);
-
-        if (document.querySelector(`.test-result-${result.name.replace(' ', '-')}`)) {
-          document.querySelector('.results')
-                  .replaceChild(div, document.querySelector(`.test-result-${result.name.replace(' ', '-')}`));
-        } else {
-          document.querySelector('.results').appendChild(div);
-        }
+        displayResult(result);
       }
     } else {
-      alert('Oh no the test went up the shitter');
+      const error = {
+        score: 4,
+        name: 'error',
+        message: 'Ut-oh! Something went wrong when we tried to sanity check your site :('
+      };
+      displayResult(error);
     }
   });
 }
