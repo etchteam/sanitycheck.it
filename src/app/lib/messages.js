@@ -1,4 +1,4 @@
-var messages = {
+const messages = {
   css: {
     1: 'Nice, not too many CSS files.',
     2: 'Look at concatenating your CSS for faster page load.',

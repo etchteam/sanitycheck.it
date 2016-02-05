@@ -1,15 +1,16 @@
 import path from 'path';
-var    rootPath = path.normalize(__dirname + '/../..');
-var    env = process.env.NODE_ENV || 'development';
-var    port = process.env.PORT || 3000;
 
-var config = {
+const rootPath = path.normalize(`${__dirname}/../..`);
+const env = process.env.NODE_ENV || 'development';
+const port = process.env.PORT || 3000;
+
+const config = {
   development: {
     root: rootPath,
     app: {
       name: 'sanitycheck-it'
     },
-    port: port
+    port
   },
 
   test: {
@@ -17,7 +18,7 @@ var config = {
     app: {
       name: 'sanitycheck-it'
     },
-    port: port
+    port
   },
 
   production: {
@@ -25,7 +26,7 @@ var config = {
     app: {
       name: 'sanitycheck-it'
     },
-    port: port
+    port
   }
 };
 

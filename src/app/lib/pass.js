@@ -1,5 +1,5 @@
 export default function (name, value) {
-  var pass = false;
+  let pass = false;
 
   switch (name) {
     case 'css':
@@ -26,7 +26,10 @@ export default function (name, value) {
     case 'accessible':
       pass = value;
       break;
+    default:
+      pass = false;
+      break;
   }
 
   return pass;
-};
+}

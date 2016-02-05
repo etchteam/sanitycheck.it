@@ -1,5 +1,5 @@
 export default function (name, value) {
-  var score = 3;
+  let score = 3;
 
   switch (name) {
     case 'css':
@@ -43,6 +43,9 @@ export default function (name, value) {
       break;
     case 'accessible':
       score = (value) ? 0 : 4;
+      break;
+    default:
+      score = 2;
       break;
   }
 
