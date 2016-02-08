@@ -6,10 +6,18 @@ export default function (name, value) {
   switch (name) {
     case 'css':
     case 'js':
-    case 'fonts':
-      if (value <= 2) {
+      if (value <= 4) {
         score = 1;
-      } else if (value <= 4) {
+      } else if (value <= 6) {
+        score = 2;
+      } else {
+        score = 3;
+      }
+      break;
+    case 'fonts':
+      if (value <= 4) {
+        score = 1;
+      } else if (value <= 8) {
         score = 2;
       } else {
         score = 3;
