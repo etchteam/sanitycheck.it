@@ -5,12 +5,12 @@ import setup from './config/setup';
 import http from 'http';
 import socketio from 'socket.io';
 
-var app = express();
+const app = express();
 
 expressConfig(app, config);
 
-var server = http.Server(app);
-var io = socketio.listen(server);
+const server = http.Server(app);
+const io = socketio.listen(server);
 
 setup(app, io);
 

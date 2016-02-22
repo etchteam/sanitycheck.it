@@ -1,13 +1,23 @@
+import moment from 'moment';
+
 export default function (name, value) {
-  var score = 3;
+  let score = 3;
 
   switch (name) {
     case 'css':
     case 'js':
-    case 'fonts':
-      if (value <= 2) {
+      if (value <= 4) {
         score = 1;
-      } else if (value <= 4) {
+      } else if (value <= 6) {
+        score = 2;
+      } else {
+        score = 3;
+      }
+      break;
+    case 'fonts':
+      if (value <= 4) {
+        score = 1;
+      } else if (value <= 8) {
         score = 2;
       } else {
         score = 3;
@@ -43,6 +53,18 @@ export default function (name, value) {
       break;
     case 'accessible':
       score = (value) ? 0 : 4;
+      break;
+    case 'updated':
+      if (moment(value) < moment().subtract(1, 'years')) {
+        score = 4;
+      } else if (moment(value) < moment().subtract(6, 'months')) {
+        score = 2;
+      } else {
+        score = 0;
+      }
+      break;
+    default:
+      score = 2;
       break;
   }
 

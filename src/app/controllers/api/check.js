@@ -2,67 +2,73 @@ import express from 'express';
 import path from 'path';
 import phantom from 'phantom';
 import phantomjs from 'phantomjs';
-import io from 'socket.io';
 import result from '../../models/result';
 
-var router = express.Router();
+const router = express.Router();
+let webSocket;
 
-function testResources(url, socket) {
+function sendMessage(message, status = 'success') {
+  const data = {
+    status
+  };
 
-  var options = {
-    path: path.normalize(phantomjs.path + '/..' + '/'),
+  if (Array.isArray(message)) {
+    data.results = message;
+  } else {
+    data.results = [message];
+  }
+
+  webSocket.emit('message', data);
+}
+
+function testResources(url) {
+  const options = {
+    path: path.normalize(`${phantomjs.path}/../`),
     parameters: {
       'ignore-ssl-errors': 'yes',
       'ssl-protocol': 'any'
     }
   };
 
-  phantom.create(function (ph) {
-    ph.createPage(function (page) {
-      var time = Date.now();
-      var js = 0;
-      var css = 0;
-      var img = 0;
-      var fonts = 0;
+  phantom.create((ph) => {
+    ph.createPage((page) => {
+      let time = Date.now();
+      let js = 0;
+      let css = 0;
+      let img = 0;
+      let fonts = 0;
 
-      var imagePattern = /image\/(?!svg\+xml)/g;
-      var cssPattern = /text\/css/g;
-      var jsPattern = /(text|application)\/javascript/g;
-      var fontPattern = /(application|image)\/(x-font-[a-z]*|font-woff|vnd.ms-fontobject|svg\+xml)/g
+      const imagePattern = /image\/(?!svg\+xml)/g;
+      const cssPattern = /text\/css/g;
+      const jsPattern = /(text|application)\/javascript/g;
+      const fontPattern = /(application|image)\/(x-font-[a-z]*|font-woff|vnd.ms-fontobject|svg\+xml)/g;
 
-      page.set('onResourceReceived', function (res) {
-        res.headers.some(function (header) {
-          if (header.name == 'Content-Type') {
-            var contentType = header.value.toLowerCase();
+      page.set('onResourceReceived', (res) => {
+        res.headers.some((header) => {
+          if (header.name === 'Last-Modified') {
+            const message = result({ name: 'updated', prettyName: 'Updated recently', value: header.value });
+            sendMessage(message);
+          }
+
+          if (header.name === 'Content-Type') {
+            const contentType = header.value.toLowerCase();
 
             if (contentType.match(imagePattern)) {
               img++;
-              socket.emit('message', {
-                status: 'success',
-                results: [
-                  result({ name: 'images', value: img })
-                ]});
+              const message = result({ name: 'images', prettyName: 'Number of images', value: img });
+              sendMessage(message);
             } else if (contentType.match(cssPattern)) {
               css++;
-              socket.emit('message', {
-                status: 'success',
-                results: [
-                  result({ name: 'css', value: css })
-                ]});
+              const message = result({ name: 'css', prettyName: 'Number of CSS files', value: css });
+              sendMessage(message);
             } else if (contentType.match(jsPattern)) {
               js++;
-              socket.emit('message', {
-                status: 'success',
-                results: [
-                  result({ name: 'js', value: js })
-                ]});
+              const message = result({ name: 'js', prettyName: 'Number of javascript files', value: js });
+              sendMessage(message);
             } else if (contentType.match(fontPattern)) {
               fonts++;
-              socket.emit('message', {
-                status: 'success',
-                results: [
-                  result({ name: 'fonts', value: fonts })
-                ]});
+              const message = result({ name: 'fonts', prettyName: 'Number of fonts', value: fonts });
+              sendMessage(message);
             }
 
             return true;
@@ -70,65 +76,54 @@ function testResources(url, socket) {
         });
       });
 
-      page.open(url, function (status) {
-        if (status == 'success') {
+      page.open(url, (status) => {
+        if (status === 'success') {
           time = Date.now() - time;
 
-          page.evaluate(function(){
-            var testResults = {};
-            testResults.responsive = (document.querySelector('[name="viewport"]')) ? true : false;
+          page.evaluate(() => {
+            const testResults = {};
 
-            var is_html5 = function () {
-              if (document.doctype === null) return false;
+            function isHtml5() {
+              const node = document.doctype;
 
-              var node = document.doctype;
-              var doctype_string = "<!DOCTYPE " + node.name + (node.publicId ? ' PUBLIC"' + node.publicId + '"' : '') + (!node.publicId && node.systemId ? ' SYSTEM' : '') + (node.systemId ? ' "' + node.systemId + '"' : '') + ">";
+              if (node === null) {
+                return false;
+              }
 
-              return doctype_string === '<!DOCTYPE html>';
-            };
+              const doctype = `<!DOCTYPE ${node.name}${(node.publicId ? ` PUBLIC "${node.publicId}"` : '')}${(!node.publicId && node.systemId ? ' SYSTEM' : '')}${(node.systemId ? ` "${node.systemId}"` : '')}>`;
+              return doctype === '<!DOCTYPE html>';
+            }
 
-            testResults.html5 = is_html5();
-
-            testResults.accessible = (document.querySelector('[role]')) ? true : false;
+            testResults.html5 = isHtml5();
+            testResults.responsive = document.querySelector('[name="viewport"]') !== null;
+            testResults.accessible = document.querySelector('[role]') !== null;
 
             return testResults;
-
-          },function(testResults){
-            socket.emit('message', {
-              status: 'success',
-              results: [
-                result({ name: 'responsive', value: testResults.responsive || false }),
-                result({ name: 'html5', value: testResults.html5 || false }),
-                result({ name: 'accessible', value: testResults.accessible || false }),
-                result({ name: 'load', value: time })
-              ]});
+          }, (testResults) => {
+            const message = [
+              result({ name: 'responsive', prettyName: 'Mobile ready', value: testResults.responsive }),
+              result({ name: 'html5', prettyName: 'Modern HTML', value: testResults.html5 }),
+              result({ name: 'accessible', prettyName: 'Accessibility', value: testResults.accessible }),
+              result({ name: 'load', prettyName: 'Load time', value: time })
+            ];
+            sendMessage(message);
             ph.exit();
           });
-
         } else {
-          socket.emit('message', {
-            status: 'failed'
-          });
+          sendMessage('', 'failed');
         }
       });
     });
   }, options);
 }
 
-function runTests(url,socket) {
-  // Put tests here
-  testResources(url,socket);
-}
-
-module.exports = function (app, io) {
+module.exports = (app, io) => {
   app.use('/', router);
 
-  io.on('connection', function (socket) {
-    console.log('socket connected');
-
-    socket.on('newurl', function (data) {
-      runTests(data.url,socket);
+  io.on('connection', (socket) => {
+    webSocket = socket;
+    webSocket.on('newurl', (data) => {
+      testResources(data.url);
     });
-
   });
 };

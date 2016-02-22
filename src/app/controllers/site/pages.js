@@ -1,13 +1,15 @@
 import express from 'express';
 
-var router = express.Router();
+const router = express.Router();
 
-module.exports = function (app) {
-  app.use('/', router);
-};
-
-router.get('/', function (req, res, next) {
+function index(req, res) {
   res.render('index', {
     title: 'SanityCheck.it'
   });
-});
+}
+
+router.get('/', index);
+
+module.exports = (app) => {
+  app.use('/', router);
+};

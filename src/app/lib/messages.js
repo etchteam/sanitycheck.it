@@ -1,4 +1,4 @@
-var messages = {
+const messages = {
   css: {
     1: 'Nice, not too many CSS files.',
     2: 'Look at concatenating your CSS for faster page load.',
@@ -37,6 +37,11 @@ var messages = {
   accessible: {
     4: 'Your site needs to be made more accessible for people with disabilities.',
     0: 'Nice accessibility work.'
+  },
+  updated: {
+    0: 'Your site was updated recently!',
+    2: 'You could probably update your site more frequently',
+    4: "Your site hasn't been updated in a while"
   }
 };
 

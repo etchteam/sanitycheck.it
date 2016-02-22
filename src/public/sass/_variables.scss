@@ -2,7 +2,10 @@
 // Ingredients
 //
 
+//
 // Sizing
+//
+
 $font-size: 16;
 $base-unit: 16px;
 $line-height: 1.5; // #NOTE: Do we need different line heights for headings?
@@ -23,11 +26,13 @@ $spacing-h: 1em;
 $spacing-v-fluid: 5%;
 $spacing-h-fluid: 10%;
 
-
+//
 // Fonts
-$font-serif:'cooper_hewittbold',sans-serif;
-$font-sans: 'cooper_hewittbook',sans-serif;;
-$font-mono: courier,"courier new", monospace;
+//
+
+$font-serif: 'cooper_hewittbold', sans-serif;
+$font-sans: 'cooper_hewittbook', sans-serif;;
+$font-mono: courier, 'courier new', monospace;
 $font-hand: cursive;
 
 // Colors
@@ -39,14 +44,14 @@ $color-brand-light: #155e63;
 $color-comms-info:  #67b3c8;
 $color-comms-warning: #f3bb45;
 $color-comms-negative: $color-brand-primary;
-$color-comms-positive: #7AC29A;
+$color-comms-positive: #7ac29a;
 
 //
 // Base
 //
 
 $base-bg: #2bcfc4;
-$base-color: #FFF;
+$base-color: #fff;
 $base-color-light: #fff;
 $base-color-dark: #fff;
 $base-font: $font-sans;
@@ -54,9 +59,25 @@ $base-font: $font-sans;
 $link-color:  #2bcfc4;
 
 $alert-color-info: $color-comms-info;
-$alert-bg-info: lighten($color-comms-info,35%);
+$alert-bg-info: lighten($color-comms-info, 35%);
 $alert-color-warning: darken($color-comms-warning, 5%);
-$alert-bg-warning: lighten($color-comms-warning,30%);
+$alert-bg-warning: lighten($color-comms-warning, 30%);
+
+//
+// Results
+//
+
+$test-result-bg: $base-color;
+$test-result-color: #333;
+$test-result-icon-bg: #ddd;
+
+$low-score-icon-bg: #089aab;
+$medium-score-icon-bg: #e7ae13;
+$high-score-icon-bg: #ff6562;
+
+$rb-brand-color: #eb5e27;
+
+$input-color: #333;
 
 //
 // UI
@@ -67,10 +88,5 @@ $ui-border-color: #fff;
 $ui-border-radius: 0;
 $ui-border-radius-large: .25em * 8;
 
-
-$ui-transition-effect: cubic-bezier(.10, .10, .25, .90);
+$ui-transition-effect: cubic-bezier(.1, .1, .25, .9);
 $ui-transition: .125s $ui-transition-effect;
-
-
-
-// Layout
